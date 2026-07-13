@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jalupang Teknik | Solusi Teknologi Lingkungan</title>
-    
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Inter & Outfit (for headings) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
-    
+
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
     <!-- AOS Animation CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <!-- Tailwind Config -->
     <script>
@@ -34,56 +34,64 @@
                             100: '#dcfce7',
                             500: '#22c55e',
                             600: '#16a34a',
-                            700: '#15803d', // Primary Brand Color
+                            700: '#15803d',
                             800: '#166534',
                             900: '#14532d',
                         },
-                        earth: '#27272a' // Zinc 800 for dark text
-                    }
-                }
-            }
-        }
+                        earth: '#27272a',
+                    },
+                },
+            },
+        };
     </script>
     <style>
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f0fdf4; }
-        ::-webkit-scrollbar-thumb { background: #86efac; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #22c55e; }
-        
-        /* Glassmorphism utility */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0fdf4;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #86efac;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #22c55e;
+        }
         .glass-nav {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(22, 163, 74, 0.1);
         }
-        
-        /* Tab animation */
         @keyframes fadeInTab {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         .animate-fade-in {
             animation: fadeInTab 0.4s ease-out forwards;
         }
     </style>
 </head>
+
 <body class="font-sans text-gray-600 bg-white antialiased selection:bg-green-600 selection:text-white">
 
-    <!-- Navigation -->
+    <!-- ========== NAVIGATION ========== -->
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
                     <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-green-500/30">
                         <i class="fas fa-leaf"></i>
                     </div>
                     <span class="font-heading font-bold text-2xl text-earth tracking-tight">Jalupang<span class="text-green-600">Teknik</span></span>
                 </div>
-
-                <!-- Desktop Menu -->
                 <div class="hidden lg:flex space-x-8 items-center">
                     <a href="#profil" class="text-gray-600 hover:text-green-600 font-medium transition-colors">Profil</a>
                     <a href="#legalitas" class="text-gray-600 hover:text-green-600 font-medium transition-colors">Legalitas</a>
@@ -92,8 +100,6 @@
                     <a href="#berita" class="text-gray-600 hover:text-green-600 font-medium transition-colors">Berita</a>
                     <a href="#kontak" class="bg-green-700 text-white px-6 py-2.5 rounded-full font-medium hover:bg-green-800 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">Hubungi Kami</a>
                 </div>
-
-                <!-- Mobile Menu Button -->
                 <div class="lg:hidden flex items-center">
                     <button id="mobile-menu-btn" class="text-gray-600 hover:text-green-700 focus:outline-none p-2">
                         <i class="fas fa-bars text-2xl"></i>
@@ -101,8 +107,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Mobile Menu Panel -->
         <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-green-50 absolute w-full shadow-xl">
             <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
                 <a href="#profil" class="mobile-link block px-3 py-3 text-base font-medium text-gray-700 hover:text-green-700 hover:bg-green-50 rounded-lg">Profil</a>
@@ -115,12 +119,10 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- ========== HERO ========== -->
     <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-green-50/50">
-        <!-- Abstract Bio-shapes -->
         <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-green-200/50 blur-[80px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-emerald-200/40 blur-[60px] translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
-
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex flex-col lg:flex-row items-center gap-16">
                 <div class="w-full lg:w-1/2 text-center lg:text-left" data-aos="fade-right" data-aos-duration="1000">
@@ -128,9 +130,9 @@
                         <i class="fas fa-globe-asia text-green-600"></i> Untuk Bumi yang Lebih Baik
                     </div>
                     <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-earth leading-tight mb-6">
-                        Solusi <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-500">Teknologi Hijau</span> <br>Masa Depan.
+                        Solusi <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-500">Teknologi Hijau</span> <br />Masa Depan.
                     </h1>
-                    <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                    <p id="hero-tagline" class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                         Jalupang Teknik menghadirkan inovasi rekayasa lingkungan terpadu. Kami mengintegrasikan teknologi ramah lingkungan untuk menciptakan keseimbangan antara kemajuan industri dan kelestarian alam.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -142,14 +144,11 @@
                         </a>
                     </div>
                 </div>
-                
                 <div class="w-full lg:w-1/2 relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                     <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
                         <div class="absolute inset-0 bg-green-900/10 mix-blend-multiply"></div>
-                        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Green Technology Infrastructure" class="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700">
+                        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Green Technology Infrastructure" class="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700" />
                     </div>
-                    
-                    <!-- Floating Eco Card 1 -->
                     <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-4 animate-bounce" style="animation-duration: 4s;">
                         <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl">
                             <i class="fas fa-leaf"></i>
@@ -159,8 +158,6 @@
                             <p class="text-xs text-gray-500">Commitment</p>
                         </div>
                     </div>
-
-                    <!-- Floating Eco Card 2 -->
                     <div class="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-4 animate-bounce" style="animation-duration: 3.5s; animation-delay: 1s;">
                         <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xl">
                             <i class="fas fa-wind"></i>
@@ -175,18 +172,18 @@
         </div>
     </section>
 
-    <!-- 1. Profil Lembaga/Perusahaan -->
+    <!-- ========== PROFIL (dengan Tab) ========== -->
     <section id="profil" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
                 <span class="text-green-600 font-bold tracking-wider uppercase text-sm mb-2 block">Profil Perusahaan</span>
                 <h2 class="font-heading text-3xl md:text-4xl font-bold text-earth mb-4">Mengenal Jalupang Teknik</h2>
                 <div class="w-20 h-1 bg-green-500 mx-auto rounded-full mb-6"></div>
-                <p class="text-gray-500">Berdedikasi sejak 2012 untuk menghadirkan teknologi rekayasa lingkungan yang inovatif demi menjaga kelestarian bumi.</p>
+                <p id="profil-deskripsi" class="text-gray-500">Berdedikasi sejak 2012 untuk menghadirkan teknologi rekayasa lingkungan yang inovatif demi menjaga kelestarian bumi.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-                <!-- Tab Menu (Left) -->
+                <!-- Tab Menu -->
                 <div class="lg:col-span-4" data-aos="fade-right">
                     <div class="flex flex-col space-y-3 bg-green-50/50 p-3 rounded-2xl border border-green-100/50">
                         <button class="tab-btn active text-left px-6 py-4 rounded-xl font-semibold transition-all duration-200 bg-white shadow-sm text-green-700 border border-green-100" data-target="tab-deskripsi">
@@ -204,17 +201,15 @@
                     </div>
                 </div>
 
-                <!-- Tab Content (Right) -->
+                <!-- Tab Content -->
                 <div class="lg:col-span-8" data-aos="fade-left">
-                    
-                    <!-- Deskripsi -->
                     <div id="tab-deskripsi" class="tab-content active bg-white p-8 md:p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100">
                         <h3 class="font-heading text-2xl font-bold text-earth mb-4">Siapa Kami?</h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed">
-                            <strong>PT Jalupang Teknik Lingkungan</strong> adalah perusahaan konsultan dan kontraktor rekayasa teknik (*engineering*) yang berfokus secara eksklusif pada teknologi hijau (*green technology*) dan manajemen lingkungan terpadu.
+                        <p id="profil-deskripsi-lengkap" class="text-gray-600 mb-4 leading-relaxed">
+                            <strong>PT Jalupang Teknik Lingkungan</strong> adalah perusahaan konsultan dan kontraktor rekayasa teknik (<em>engineering</em>) yang berfokus secara eksklusif pada teknologi hijau (<em>green technology</em>) dan manajemen lingkungan terpadu.
                         </p>
-                        <p class="text-gray-600 mb-8 leading-relaxed">
-                            Kami bermitra dengan kawasan industri, pemerintah daerah, dan sektor swasta untuk merancang fasilitas pengolahan limbah, instalasi energi terbarukan, serta melakukan audit lingkungan guna meminimalkan jejak karbon (*carbon footprint*).
+                        <p id="profil-deskripsi-lengkap-2" class="text-gray-600 mb-8 leading-relaxed">
+                            Kami bermitra dengan kawasan industri, pemerintah daerah, dan sektor swasta untuk merancang fasilitas pengolahan limbah, instalasi energi terbarukan, serta melakukan audit lingkungan guna meminimalkan jejak karbon (<em>carbon footprint</em>).
                         </p>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-6 pt-6 border-t border-gray-100">
                             <div>
@@ -232,10 +227,10 @@
                         </div>
                     </div>
 
-                    <!-- Sejarah -->
                     <div id="tab-sejarah" class="tab-content hidden bg-white p-8 md:p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100">
                         <h3 class="font-heading text-2xl font-bold text-earth mb-8">Jejak Langkah Kami</h3>
-                        <div class="relative border-l-2 border-green-200 ml-3 space-y-10">
+                        <div id="timeline-container" class="relative border-l-2 border-green-200 ml-3 space-y-10">
+                            <!-- akan diisi oleh JavaScript -->
                             <div class="relative pl-6">
                                 <div class="absolute w-5 h-5 bg-green-500 rounded-full -left-[11px] top-0 border-4 border-white shadow-sm"></div>
                                 <span class="text-sm font-bold text-green-600 mb-1 block">Tahun 2012</span>
@@ -257,16 +252,15 @@
                         </div>
                     </div>
 
-                    <!-- Visi Misi -->
                     <div id="tab-visi" class="tab-content hidden bg-white p-8 md:p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100">
                         <h3 class="font-heading text-2xl font-bold text-earth mb-4">Visi Kami</h3>
-                        <div class="bg-green-50 border-l-4 border-green-600 p-6 rounded-r-xl mb-8">
+                        <div id="visi-container" class="bg-green-50 border-l-4 border-green-600 p-6 rounded-r-xl mb-8">
                             <p class="text-gray-700 italic text-lg font-medium">
                                 "Menjadi pelopor rekayasa teknologi hijau terkemuka di Asia Tenggara yang menginspirasi transformasi industri menuju ekosistem tanpa emisi."
                             </p>
                         </div>
                         <h3 class="font-heading text-2xl font-bold text-earth mb-4">Misi Kami</h3>
-                        <ul class="space-y-4">
+                        <ul id="misi-container" class="space-y-4">
                             <li class="flex items-start bg-gray-50 p-4 rounded-xl">
                                 <div class="bg-white p-2 rounded-lg text-green-600 shadow-sm mr-4 mt-0.5"><i class="fas fa-leaf"></i></div>
                                 <span class="text-gray-600">Menerapkan standar teknologi lingkungan kelas dunia dalam setiap proyek rekayasa dan pengelolaan limbah.</span>
@@ -282,34 +276,30 @@
                         </ul>
                     </div>
 
-                    <!-- Struktur Organisasi -->
                     <div id="tab-struktur" class="tab-content hidden bg-white p-8 md:p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100">
                         <h3 class="font-heading text-2xl font-bold text-earth mb-6">Jajaran Manajemen Inti</h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <!-- Person 1 -->
+                        <div id="struktur-container" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div class="flex items-center gap-4 bg-gray-50 p-4 rounded-2xl border border-gray-100 hover:border-green-200 transition-colors">
                                 <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center text-green-700 text-2xl font-bold">
-                                    <img src="https://placehold.co/100x100/166534/ffffff?text=DR" class="w-full h-full rounded-full object-cover" alt="Dirut">
+                                    <img src="https://placehold.co/100x100/166534/ffffff?text=DR" class="w-full h-full rounded-full object-cover" alt="Dirut" />
                                 </div>
                                 <div>
                                     <h4 class="font-heading font-bold text-earth">Dr. Ir. Hendra Gunawan, M.T.</h4>
                                     <p class="text-xs text-green-600 font-medium uppercase tracking-wider mt-1">Direktur Utama</p>
                                 </div>
                             </div>
-                            <!-- Person 2 -->
                             <div class="flex items-center gap-4 bg-gray-50 p-4 rounded-2xl border border-gray-100 hover:border-green-200 transition-colors">
                                 <div class="w-16 h-16 rounded-full bg-teal-200 flex items-center justify-center text-teal-700 text-2xl font-bold">
-                                    <img src="https://placehold.co/100x100/0f766e/ffffff?text=TD" class="w-full h-full rounded-full object-cover" alt="Technical Dir">
+                                    <img src="https://placehold.co/100x100/0f766e/ffffff?text=TD" class="w-full h-full rounded-full object-cover" alt="Technical Dir" />
                                 </div>
                                 <div>
                                     <h4 class="font-heading font-bold text-earth">Siti Nurbaya, S.T., M.Sc.</h4>
                                     <p class="text-xs text-teal-600 font-medium uppercase tracking-wider mt-1">Direktur Teknik & Operasi</p>
                                 </div>
                             </div>
-                            <!-- Person 3 -->
                             <div class="flex items-center gap-4 bg-gray-50 p-4 rounded-2xl border border-gray-100 hover:border-green-200 transition-colors">
                                 <div class="w-16 h-16 rounded-full bg-emerald-200 flex items-center justify-center text-emerald-700 text-2xl font-bold">
-                                    <img src="https://placehold.co/100x100/047857/ffffff?text=SD" class="w-full h-full rounded-full object-cover" alt="Sustainability Dir">
+                                    <img src="https://placehold.co/100x100/047857/ffffff?text=SD" class="w-full h-full rounded-full object-cover" alt="Sustainability Dir" />
                                 </div>
                                 <div>
                                     <h4 class="font-heading font-bold text-earth">Ahmad Fauzan, S.Si.</h4>
@@ -323,11 +313,9 @@
         </div>
     </section>
 
-    <!-- 2. Legalitas & Penghargaan -->
+    <!-- ========== LEGALITAS ========== -->
     <section id="legalitas" class="py-24 bg-earth text-white relative overflow-hidden">
-        <!-- Abstract Background -->
         <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#22c55e 1px, transparent 1px); background-size: 32px 32px;"></div>
-        
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                 <div class="max-w-2xl" data-aos="fade-right">
@@ -338,9 +326,7 @@
                     <p class="text-gray-400 max-w-md md:text-right">Sebagai kontraktor lingkungan, operasi kami sepenuhnya mematuhi hukum nasional dan tersertifikasi oleh standar manajemen lingkungan internasional.</p>
                 </div>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-                <!-- Legal Table -->
                 <div class="md:col-span-7 bg-gray-800/80 backdrop-blur-sm p-8 rounded-3xl border border-gray-700" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-12 h-12 bg-gray-700 rounded-xl flex items-center justify-center text-green-400 text-xl">
@@ -348,7 +334,8 @@
                         </div>
                         <h3 class="font-heading text-xl font-bold">Izin Usaha & Badan Hukum</h3>
                     </div>
-                    <div class="overflow-x-auto">
+                    <div id="legalitas-container" class="overflow-x-auto">
+                        <!-- akan diisi dari Supabase (tabel credentials) -->
                         <table class="w-full text-sm text-left text-gray-300">
                             <tbody class="divide-y divide-gray-700">
                                 <tr>
@@ -371,10 +358,7 @@
                         </table>
                     </div>
                 </div>
-
-                <!-- Certs & Awards -->
                 <div class="md:col-span-5 space-y-8" data-aos="fade-up" data-aos-delay="200">
-                    <!-- Cert 1 -->
                     <div class="bg-gradient-to-br from-green-900/50 to-gray-800 p-6 rounded-3xl border border-green-800/50 flex items-center gap-6 transform hover:-translate-y-1 transition-transform">
                         <div class="w-16 h-16 rounded-full bg-green-500/20 border border-green-500/50 flex items-center justify-center text-green-400 text-3xl flex-shrink-0">
                             <i class="fas fa-certificate"></i>
@@ -384,7 +368,6 @@
                             <p class="text-sm text-gray-400 mt-1">Sistem Manajemen Lingkungan</p>
                         </div>
                     </div>
-                    <!-- Cert 2 -->
                     <div class="bg-gradient-to-br from-teal-900/50 to-gray-800 p-6 rounded-3xl border border-teal-800/50 flex items-center gap-6 transform hover:-translate-y-1 transition-transform">
                         <div class="w-16 h-16 rounded-full bg-teal-500/20 border border-teal-500/50 flex items-center justify-center text-teal-400 text-3xl flex-shrink-0">
                             <i class="fas fa-check-double"></i>
@@ -394,7 +377,6 @@
                             <p class="text-sm text-gray-400 mt-1">Sistem Manajemen Mutu</p>
                         </div>
                     </div>
-                    <!-- Award -->
                     <div class="bg-gradient-to-br from-yellow-900/30 to-gray-800 p-6 rounded-3xl border border-yellow-700/30 flex items-center gap-6 transform hover:-translate-y-1 transition-transform">
                         <div class="w-16 h-16 rounded-full bg-yellow-500/20 border border-yellow-500/50 flex items-center justify-center text-yellow-400 text-2xl flex-shrink-0">
                             <i class="fas fa-trophy"></i>
@@ -409,7 +391,7 @@
         </div>
     </section>
 
-    <!-- 3. Program / Layanan -->
+    <!-- ========== LAYANAN ========== -->
     <section id="layanan" class="py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
@@ -417,57 +399,13 @@
                 <h2 class="font-heading text-3xl md:text-4xl font-bold text-earth mb-4">Solusi Terpadu Rekayasa Lingkungan</h2>
                 <div class="w-20 h-1 bg-green-500 mx-auto rounded-full mb-6"></div>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="bg-white rounded-[2rem] p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                        <i class="fas fa-water"></i>
-                    </div>
-                    <h3 class="font-heading text-xl font-bold text-earth mb-3">Wastewater Treatment Plant (WWTP)</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-6">
-                        Desain, konstruksi, dan optimalisasi Instalasi Pengolahan Air Limbah industri (Kimia, Tekstil, Makanan) agar baku mutu limbah aman bagi ekosistem sungai.
-                    </p>
-                    <ul class="text-sm text-gray-600 space-y-2 mb-6">
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Sistem Aerobik & Anaerobik</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Reverse Osmosis (RO)</li>
-                    </ul>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="bg-white rounded-[2rem] p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 bg-yellow-50 text-yellow-600 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 group-hover:bg-yellow-500 group-hover:text-white transition-all">
-                        <i class="fas fa-solar-panel"></i>
-                    </div>
-                    <h3 class="font-heading text-xl font-bold text-earth mb-3">Renewable Energy Systems (PLTS)</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-6">
-                        Instalasi Pembangkit Listrik Tenaga Surya (Solar Panel) komersial dan industrial (On-Grid/Off-Grid) untuk mengurangi biaya energi dan emisi karbon.
-                    </p>
-                    <ul class="text-sm text-gray-600 space-y-2 mb-6">
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Rooftop Solar System</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Audit Efisiensi Energi</li>
-                    </ul>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="bg-white rounded-[2rem] p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-16 h-16 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 group-hover:bg-green-600 group-hover:text-white transition-all">
-                        <i class="fas fa-clipboard-check"></i>
-                    </div>
-                    <h3 class="font-heading text-xl font-bold text-earth mb-3">Environmental Consulting (AMDAL)</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-6">
-                        Layanan konsultasi penyusunan dokumen lingkungan hidup (AMDAL, UKL-UPL, SPPL) serta perizinan Persetujuan Teknis pembuangan emisi/limbah.
-                    </p>
-                    <ul class="text-sm text-gray-600 space-y-2 mb-6">
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Studi Kelayakan AMDAL</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Monitoring Lingkungan Berkala</li>
-                    </ul>
-                </div>
+            <div id="services-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Akan diisi oleh JavaScript dari Supabase -->
             </div>
         </div>
     </section>
 
-    <!-- 4. Portofolio & Dampak -->
+    <!-- ========== PORTOFOLIO & DAMPAK ========== -->
     <section id="portofolio" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row justify-between items-end mb-12 gap-8">
@@ -482,7 +420,6 @@
                 </div>
             </div>
 
-            <!-- Impact Banner -->
             <div class="bg-green-700 rounded-3xl p-8 md:p-10 mb-12 flex flex-col md:flex-row items-center justify-around text-center text-white shadow-xl shadow-green-700/20" data-aos="zoom-in">
                 <div class="p-4">
                     <p class="text-4xl font-heading font-bold mb-2">1.2M+</p>
@@ -500,113 +437,34 @@
                 </div>
             </div>
 
-            <!-- Project Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
-                <div class="group relative rounded-[2rem] overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Water Treatment" class="w-full h-80 object-cover transform transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-earth/95 via-earth/50 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-8 w-full">
-                        <span class="inline-block px-3 py-1 bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs font-bold rounded-full mb-3 backdrop-blur-md">WWTP Construction</span>
-                        <h3 class="font-heading text-2xl font-bold text-white mb-2">Instalasi WWTP Kawasan Industri X</h3>
-                        <p class="text-gray-300 text-sm line-clamp-2">Pembangunan fasilitas pengolahan limbah cair kapasitas 5000 m3/hari dengan teknologi bio-membrane.</p>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="group relative rounded-[2rem] overflow-hidden shadow-md md:mt-12" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1509391366360-1e97f52ce23b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Solar Panels" class="w-full h-80 object-cover transform transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-earth/95 via-earth/50 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-8 w-full">
-                        <span class="inline-block px-3 py-1 bg-yellow-500/20 border border-yellow-400/30 text-yellow-300 text-xs font-bold rounded-full mb-3 backdrop-blur-md">Renewable Energy</span>
-                        <h3 class="font-heading text-2xl font-bold text-white mb-2">Rooftop Solar Pabrik Tekstil</h3>
-                        <p class="text-gray-300 text-sm line-clamp-2">Instalasi panel surya atap kapasitas 2.5 MWp yang berhasil mereduksi biaya listrik operasional hingga 30%.</p>
-                    </div>
-                </div>
+            <div id="portfolios-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Akan diisi oleh JavaScript dari Supabase -->
             </div>
         </div>
     </section>
 
-    <!-- 5. Artikel & Berita -->
+    <!-- ========== BERITA ========== -->
     <section id="berita" class="py-24 bg-green-50/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
                 <span class="text-green-600 font-bold tracking-wider uppercase text-sm mb-2 block">Pusat Pengetahuan</span>
                 <h2 class="font-heading text-3xl md:text-4xl font-bold text-earth mb-4">Wawasan & Berita Lingkungan</h2>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Article 1 -->
-                <article class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative overflow-hidden h-48">
-                        <img src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Berita 1" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between text-xs text-gray-400 mb-3">
-                            <span class="bg-green-100 text-green-700 px-2 py-1 rounded font-medium">Edukasi</span>
-                            <span><i class="far fa-calendar mr-1"></i> 12 Okt 2025</span>
-                        </div>
-                        <h4 class="font-heading text-xl font-bold text-earth mb-3 group-hover:text-green-600 transition-colors line-clamp-2">
-                            Pentingnya Implementasi ISO 14001 bagi Industri Manufaktur
-                        </h4>
-                        <p class="text-gray-500 text-sm mb-4 line-clamp-3">Manajemen lingkungan bukan sekadar kewajiban hukum, melainkan investasi jangka panjang. Pelajari bagaimana ISO 14001 dapat meningkatkan...</p>
-                        <a href="#" class="text-green-700 font-semibold text-sm hover:text-green-800 inline-flex items-center gap-1">Baca Selengkapnya <i class="fas fa-chevron-right text-[10px] mt-0.5"></i></a>
-                    </div>
-                </article>
-
-                <!-- Article 2 -->
-                <article class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative overflow-hidden h-48">
-                        <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Berita 2" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between text-xs text-gray-400 mb-3">
-                            <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded font-medium">Inovasi</span>
-                            <span><i class="far fa-calendar mr-1"></i> 05 Okt 2025</span>
-                        </div>
-                        <h4 class="font-heading text-xl font-bold text-earth mb-3 group-hover:text-green-600 transition-colors line-clamp-2">
-                            Tren Teknologi Biomembrane Membrane Reactor (MBR)
-                        </h4>
-                        <p class="text-gray-500 text-sm mb-4 line-clamp-3">Pengolahan limbah cair kini memasuki era efisiensi tinggi dengan teknologi MBR. Teknologi ini memungkinkan air hasil olahan untuk digunakan kembali...</p>
-                        <a href="#" class="text-green-700 font-semibold text-sm hover:text-green-800 inline-flex items-center gap-1">Baca Selengkapnya <i class="fas fa-chevron-right text-[10px] mt-0.5"></i></a>
-                    </div>
-                </article>
-
-                <!-- Article 3 -->
-                <article class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="relative overflow-hidden h-48">
-                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Berita 3" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between text-xs text-gray-400 mb-3">
-                            <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded font-medium">Perusahaan</span>
-                            <span><i class="far fa-calendar mr-1"></i> 28 Sep 2025</span>
-                        </div>
-                        <h4 class="font-heading text-xl font-bold text-earth mb-3 group-hover:text-green-600 transition-colors line-clamp-2">
-                            Jalupang Teknik Raih Penghargaan Green Proper 2025
-                        </h4>
-                        <p class="text-gray-500 text-sm mb-4 line-clamp-3">Komitmen kami dalam menjaga kualitas operasi rekayasa lingkungan mendapatkan apresiasi tertinggi dari Kementerian Lingkungan Hidup...</p>
-                        <a href="#" class="text-green-700 font-semibold text-sm hover:text-green-800 inline-flex items-center gap-1">Baca Selengkapnya <i class="fas fa-chevron-right text-[10px] mt-0.5"></i></a>
-                    </div>
-                </article>
+            <div id="posts-container" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Akan diisi oleh JavaScript dari Supabase -->
             </div>
         </div>
     </section>
 
-    <!-- 6. Hubungi Kami -->
+    <!-- ========== KONTAK ========== -->
     <section id="kontak" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-earth rounded-[3rem] shadow-2xl overflow-hidden flex flex-col lg:flex-row relative">
-                
-                <!-- Background Pattern inside Contact Card -->
                 <div class="absolute top-0 right-0 w-1/2 h-full bg-green-900/20 blur-3xl pointer-events-none rounded-full transform translate-x-1/2 -translate-y-1/2"></div>
-                
-                <!-- Contact Info -->
                 <div class="w-full lg:w-5/12 p-10 lg:p-14 text-white relative z-10">
                     <span class="text-green-400 font-bold tracking-wider uppercase text-sm mb-2 block">Konsultasi Gratis</span>
                     <h3 class="font-heading text-3xl font-bold mb-6">Siap Menghijaukan Bisnis Anda?</h3>
                     <p class="text-gray-400 mb-10 text-sm leading-relaxed">Tim insinyur kami siap berdiskusi untuk merumuskan solusi teknologi lingkungan terbaik yang sesuai dengan kebutuhan dan regulasi industri Anda.</p>
-                    
                     <div class="space-y-6">
                         <div class="flex items-start gap-4">
                             <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0 text-green-400">
@@ -614,7 +472,7 @@
                             </div>
                             <div>
                                 <h5 class="font-bold text-gray-200">Kantor Pusat</h5>
-                                <p class="text-sm text-gray-400 mt-1">Green Office Park Kav. 12<br>Jl. Eco Tech No. 8, Bandung, 40115</p>
+                                <p class="text-sm text-gray-400 mt-1">Green Office Park Kav. 12<br />Jl. Eco Tech No. 8, Bandung, 40115</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
@@ -623,45 +481,41 @@
                             </div>
                             <div>
                                 <h5 class="font-bold text-gray-200">Email & Kontak</h5>
-                                <p class="text-sm text-gray-400 mt-1">info@jalupangteknik.co.id<br>+62 22 1234 5678</p>
+                                <p class="text-sm text-gray-400 mt-1">info@jalupangteknik.co.id<br />+62 22 1234 5678</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Contact Form (Siap disambungkan ke CMS/Supabase) -->
                 <div class="w-full lg:w-7/12 bg-gray-50 p-10 lg:p-14 relative z-10">
                     <h4 class="font-heading text-2xl font-bold text-earth mb-6">Kirim Pesan (Inquiry)</h4>
                     <form id="contact-form" class="space-y-5">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1.5">Nama Perusahaan / Instansi</label>
-                                <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none transition-all bg-white" placeholder="PT Industri Jaya">
+                                <input type="text" id="contact-company" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none transition-all bg-white" placeholder="PT Industri Jaya" />
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1.5">Email Penanggung Jawab</label>
-                                <input type="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none transition-all bg-white" placeholder="nama@perusahaan.com">
+                                <input type="email" id="contact-email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none transition-all bg-white" placeholder="nama@perusahaan.com" />
                             </div>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1.5">Kategori Layanan</label>
-                            <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none transition-all bg-white text-gray-600 appearance-none">
-                                <option>Desain & Konstruksi IPAL (WWTP)</option>
-                                <option>Pemasangan Solar Panel (PLTS)</option>
-                                <option>Konsultasi AMDAL / UKL-UPL</option>
-                                <option>Lainnya</option>
+                            <select id="contact-service" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none transition-all bg-white text-gray-600 appearance-none">
+                                <option value="WWTP">Desain & Konstruksi IPAL (WWTP)</option>
+                                <option value="PLTS">Pemasangan Solar Panel (PLTS)</option>
+                                <option value="AMDAL">Konsultasi AMDAL / UKL-UPL</option>
+                                <option value="Lainnya">Lainnya</option>
                             </select>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1.5">Rincian Kebutuhan</label>
-                            <textarea rows="4" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none transition-all bg-white resize-none" placeholder="Ceritakan kapasitas pabrik atau kebutuhan spesifik Anda..."></textarea>
+                            <textarea id="contact-message" rows="4" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none transition-all bg-white resize-none" placeholder="Ceritakan kapasitas pabrik atau kebutuhan spesifik Anda..."></textarea>
                         </div>
                         <button type="submit" class="w-full bg-green-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-green-500/30 hover:bg-green-700 transition-all transform hover:-translate-y-0.5">
                             Kirim Permintaan Konsultasi
                         </button>
                     </form>
-                    
-                    <!-- Notifikasi Form -->
                     <div id="success-message" class="hidden mt-4 p-4 bg-green-100 text-green-700 rounded-xl border border-green-200 flex items-center gap-3">
                         <i class="fas fa-check-circle text-xl"></i>
                         <span class="text-sm font-medium">Pesan berhasil dikirim. Tim ahli kami akan menghubungi Anda segera.</span>
@@ -671,7 +525,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ========== FOOTER ========== -->
     <footer class="bg-gray-900 border-t border-gray-800 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
@@ -711,22 +565,287 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- ========== SCRIPTS ========== -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Initialize Scroll Animations (AOS)
+        // ============================================================
+        // KONFIGURASI SUPABASE & WEBSITE_ID
+        // ============================================================
+        const SUPABASE_URL = 'https://kxlpvfmsdtgvbnajcchk.supabase.co';
+        const SUPABASE_ANON_KEY =
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt4bHB2Zm1zZHRndmJuYWpjY2hrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM4MjEyODQsImV4cCI6MjA5OTM5NzI4NH0.B88Mfus3FIbTTQF8Gc3I8RwuhmWWa4Xs-mHPEHYG850';
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const WEBSITE_ID = '030ad70b-4ae0-4b74-a19f-cf5e2d4fe985'; // ID website Jalupang Teknik
+
+        // ============================================================
+        // LOAD & RENDER DATA
+        // ============================================================
+        async function loadClientData() {
+            try {
+                // 1. Ambil data website (profil, tagline, dll)
+                const { data: website, error: websiteError } = await supabaseClient
+                    .from('websites')
+                    .select('*')
+                    .eq('id', WEBSITE_ID)
+                    .single();
+                if (websiteError) throw websiteError;
+
+                // 2. Ambil layanan (offerings)
+                const { data: offerings, error: offeringsError } = await supabaseClient
+                    .from('offerings')
+                    .select('*')
+                    .eq('website_id', WEBSITE_ID)
+                    .order('created_at', { ascending: true });
+                if (offeringsError) throw offeringsError;
+
+                // 3. Ambil portofolio (portfolios)
+                const { data: portfolios, error: portfoliosError } = await supabaseClient
+                    .from('portfolios')
+                    .select('*')
+                    .eq('website_id', WEBSITE_ID)
+                    .order('created_at', { ascending: false });
+                if (portfoliosError) throw portfoliosError;
+
+                // 4. Ambil artikel (posts) yang sudah publish
+                const { data: posts, error: postsError } = await supabaseClient
+                    .from('posts')
+                    .select('*')
+                    .eq('website_id', WEBSITE_ID)
+                    .eq('status', 'published')
+                    .order('created_at', { ascending: false });
+                if (postsError) throw postsError;
+
+                // 5. Ambil linimasa (timelines) untuk tab sejarah
+                const { data: timelines, error: timelinesError } = await supabaseClient
+                    .from('timelines')
+                    .select('*')
+                    .eq('website_id', WEBSITE_ID)
+                    .order('year', { ascending: true });
+                if (timelinesError) throw timelinesError;
+
+                // 6. Ambil legalitas (credentials)
+                const { data: credentials, error: credentialsError } = await supabaseClient
+                    .from('credentials')
+                    .select('*')
+                    .eq('website_id', WEBSITE_ID)
+                    .order('year', { ascending: false });
+                if (credentialsError) throw credentialsError;
+
+                // ============================================================
+                // RENDER DATA KE HTML
+                // ============================================================
+
+                // 6a. Hero tagline
+                const heroTagline = document.getElementById('hero-tagline');
+                if (heroTagline && website.tagline) {
+                    heroTagline.textContent = website.tagline;
+                }
+
+                // 6b. Profil - deskripsi singkat
+                const profilDesc = document.getElementById('profil-deskripsi');
+                if (profilDesc && website.tagline) {
+                    profilDesc.textContent = website.tagline || 'Berdedikasi sejak 2012 untuk menghadirkan teknologi rekayasa lingkungan yang inovatif.';
+                }
+
+                // 6c. Layanan
+                const servicesContainer = document.getElementById('services-container');
+                if (servicesContainer) {
+                    if (offerings && offerings.length > 0) {
+                        const icons = ['fa-water', 'fa-solar-panel', 'fa-clipboard-check', 'fa-leaf', 'fa-recycle', 'fa-tree'];
+                        servicesContainer.innerHTML = offerings.map((item, index) => {
+                            const iconClass = item.icon_url || icons[index % icons.length] || 'fa-cube';
+                            return `
+                                <div class="bg-white rounded-[2rem] p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group" data-aos="fade-up" data-aos-delay="${(index+1)*100}">
+                                    <div class="w-16 h-16 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 group-hover:bg-green-600 group-hover:text-white transition-all">
+                                        <i class="fas ${iconClass}"></i>
+                                    </div>
+                                    <h3 class="font-heading text-xl font-bold text-earth mb-3">${item.title}</h3>
+                                    <p class="text-gray-500 text-sm leading-relaxed mb-6">${item.description || ''}</p>
+                                    <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                                        <li><i class="fas fa-check text-green-500 mr-2"></i> Solusi terintegrasi</li>
+                                        <li><i class="fas fa-check text-green-500 mr-2"></i> Berstandar internasional</li>
+                                    </ul>
+                                </div>
+                            `;
+                        }).join('');
+                    } else {
+                        servicesContainer.innerHTML =
+                            `<div class="col-span-full text-center text-gray-500 py-12">Belum ada layanan yang tersedia.</div>`;
+                    }
+                }
+
+                // 6d. Portofolio
+                const portfoliosContainer = document.getElementById('portfolios-container');
+                if (portfoliosContainer) {
+                    if (portfolios && portfolios.length > 0) {
+                        portfoliosContainer.innerHTML = portfolios.map((item, index) => {
+                            const alignClass = index % 2 !== 0 ? 'md:mt-12' : '';
+                            return `
+                                <div class="group relative rounded-[2rem] overflow-hidden shadow-md ${alignClass}" data-aos="fade-up" data-aos-delay="${(index+1)*100}">
+                                    <img src="${item.image_url || 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800&q=80'}" alt="${item.title}" class="w-full h-80 object-cover transform transition-transform duration-700 group-hover:scale-110">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-earth/95 via-earth/50 to-transparent"></div>
+                                    <div class="absolute bottom-0 left-0 p-8 w-full">
+                                        <span class="inline-block px-3 py-1 bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs font-bold rounded-full mb-3 backdrop-blur-md">${item.type || 'Proyek'}</span>
+                                        <h3 class="font-heading text-2xl font-bold text-white mb-2">${item.title}</h3>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('');
+                    } else {
+                        portfoliosContainer.innerHTML =
+                            `<div class="col-span-full text-center text-gray-500 py-12">Belum ada portofolio.</div>`;
+                    }
+                }
+
+                // 6e. Artikel / Berita
+                const postsContainer = document.getElementById('posts-container');
+                if (postsContainer) {
+                    if (posts && posts.length > 0) {
+                        postsContainer.innerHTML = posts.map((post, index) => {
+                            const date = new Date(post.created_at).toLocaleDateString('id-ID', {
+                                day: 'numeric',
+                                month: 'short',
+                                year: 'numeric'
+                            });
+                            return `
+                                <article class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 group" data-aos="fade-up" data-aos-delay="${(index+1)*100}">
+                                    <div class="relative overflow-hidden h-48">
+                                        <img src="${post.featured_image || 'https://images.unsplash.com/photo-1518623489648-a173ef7824f3?w=600&q=80'}" alt="${post.title}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                                    </div>
+                                    <div class="p-6">
+                                        <div class="flex items-center justify-between text-xs text-gray-400 mb-3">
+                                            <span class="bg-green-100 text-green-700 px-2 py-1 rounded font-medium">${post.category || 'Berita'}</span>
+                                            <span><i class="far fa-calendar mr-1"></i> ${date}</span>
+                                        </div>
+                                        <h4 class="font-heading text-xl font-bold text-earth mb-3 group-hover:text-green-600 transition-colors line-clamp-2">${post.title}</h4>
+                                        <p class="text-gray-500 text-sm mb-4 line-clamp-3">${post.excerpt || ''}</p>
+                                        <a href="#" class="text-green-700 font-semibold text-sm hover:text-green-800 inline-flex items-center gap-1">Baca Selengkapnya <i class="fas fa-chevron-right text-[10px] mt-0.5"></i></a>
+                                    </div>
+                                </article>
+                            `;
+                        }).join('');
+                    } else {
+                        postsContainer.innerHTML =
+                            `<div class="col-span-full text-center text-gray-500 py-12">Belum ada artikel yang dipublikasikan.</div>`;
+                    }
+                }
+
+                // 6f. Timelines (Sejarah) - render manual karena struktur HTML spesifik
+                const timelineContainer = document.getElementById('timeline-container');
+                if (timelineContainer && timelines && timelines.length > 0) {
+                    timelineContainer.innerHTML = timelines.map(item => `
+                        <div class="relative pl-6">
+                            <div class="absolute w-5 h-5 bg-green-500 rounded-full -left-[11px] top-0 border-4 border-white shadow-sm"></div>
+                            <span class="text-sm font-bold text-green-600 mb-1 block">Tahun ${item.year}</span>
+                            <h4 class="font-heading font-bold text-earth text-lg">${item.title}</h4>
+                            <p class="text-sm text-gray-600 mt-2">${item.description || ''}</p>
+                        </div>
+                    `).join('');
+                }
+
+                // 6g. Legalitas (Credentials) - render table
+                const legalitasContainer = document.getElementById('legalitas-container');
+                if (legalitasContainer && credentials && credentials.length > 0) {
+                    // Kita hanya tampilkan beberapa data statis + tambahkan dari database
+                    let tableRows = `
+                        <tr>
+                            <td class="py-4 font-medium text-gray-100 w-1/3">Nama Entitas Hukum</td>
+                            <td class="py-4">PT Jalupang Teknik Lingkungan</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 font-medium text-gray-100">Nomor Induk Berusaha (NIB)</td>
+                            <td class="py-4 font-mono">01234567890123</td>
+                        </tr>
+                    `;
+                    credentials.forEach(cred => {
+                        tableRows += `
+                            <tr>
+                                <td class="py-4 font-medium text-gray-100">${cred.title}</td>
+                                <td class="py-4">${cred.issuer || '-'} ${cred.year ? '('+cred.year+')' : ''}</td>
+                            </tr>
+                        `;
+                    });
+                    legalitasContainer.innerHTML = `<table class="w-full text-sm text-left text-gray-300">
+                        <tbody class="divide-y divide-gray-700">${tableRows}</tbody>
+                    </table>`;
+                }
+
+                // 6h. Visi & Misi - kita tetap gunakan statis karena tabel belum menyediakan kolom visi/misi
+                // (bisa dikembangkan nanti)
+
+                // 6i. Struktur organisasi - tetap statis
+
+                console.log('✅ Data Jalupang Teknik berhasil dimuat dari Supabase!');
+
+            } catch (error) {
+                console.error('❌ Error loading client data:', error);
+            }
+        }
+
+        // ============================================================
+        // FORM KONTAK - SIMPAN KE SUPABASE (tabel messages)
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contact-form');
+            const successMsg = document.getElementById('success-message');
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const company = document.getElementById('contact-company').value.trim();
+                const email = document.getElementById('contact-email').value.trim();
+                const service = document.getElementById('contact-service').value;
+                const message = document.getElementById('contact-message').value.trim();
+
+                if (!company || !email || !message) {
+                    alert('Harap isi semua bidang yang wajib.');
+                    return;
+                }
+
+                try {
+                    const payload = {
+                        website_id: WEBSITE_ID,
+                        sender_name: company,
+                        sender_email: email,
+                        subject: service,
+                        message: message,
+                        is_read: false
+                    };
+
+                    const { error } = await supabaseClient.from('messages').insert(payload);
+                    if (error) throw error;
+
+                    // Tampilkan pesan sukses
+                    successMsg.classList.remove('hidden');
+                    form.reset();
+                    setTimeout(() => successMsg.classList.add('hidden'), 6000);
+
+                } catch (error) {
+                    console.error('Error submitting form:', error);
+                    alert('Gagal mengirim pesan. Silakan coba lagi nanti.');
+                }
+            });
+        });
+
+        // ============================================================
+        // AOS & MOBILE MENU & TAB LOGIC (tetap dipertahankan)
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // AOS
             AOS.init({ once: true, offset: 50, duration: 800 });
 
-            // 2. Mobile Menu Logic
+            // Mobile menu
             const btn = document.getElementById('mobile-menu-btn');
             const menu = document.getElementById('mobile-menu');
             const links = document.querySelectorAll('.mobile-link');
+            if (btn && menu) {
+                btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+                links.forEach(link => link.addEventListener('click', () => menu.classList.add('hidden')));
+            }
 
-            btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-            links.forEach(link => link.addEventListener('click', () => menu.classList.add('hidden')));
-
-            // 3. Navbar Blur/Shadow on Scroll
+            // Navbar shadow on scroll
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 20) {
@@ -738,169 +857,34 @@
                 }
             });
 
-            // 4. Tab Logic untuk Profil Section
+            // Tab logic
             const tabBtns = document.querySelectorAll('.tab-btn');
             const tabContents = document.querySelectorAll('.tab-content');
-
             tabBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    // Reset styling buttons
                     tabBtns.forEach(b => {
                         b.classList.remove('bg-white', 'shadow-sm', 'text-green-700', 'border-green-100');
-                        b.classList.add('text-gray-500', 'hover:bg-white', 'hover:text-green-700', 'border-transparent', 'hover:border-green-100');
+                        b.classList.add('text-gray-500', 'hover:bg-white', 'hover:text-green-700',
+                            'border-transparent', 'hover:border-green-100');
                     });
-                    
-                    // Active button styling
-                    btn.classList.remove('text-gray-500', 'hover:bg-white', 'hover:text-green-700', 'border-transparent', 'hover:border-green-100');
+                    btn.classList.remove('text-gray-500', 'hover:bg-white', 'hover:text-green-700',
+                        'border-transparent', 'hover:border-green-100');
                     btn.classList.add('bg-white', 'shadow-sm', 'text-green-700', 'border-green-100');
 
-                    // Sembunyikan semua konten tab, lalu tampilkan target
                     tabContents.forEach(c => c.classList.add('hidden'));
                     const target = document.getElementById(btn.getAttribute('data-target'));
-                    target.classList.remove('hidden');
-                    
-                    // Trigger ulang animasi fade untuk konten yang muncul
-                    target.classList.remove('animate-fade-in');
-                    void target.offsetWidth; // hack to restart css animation
-                    target.classList.add('animate-fade-in');
+                    if (target) {
+                        target.classList.remove('hidden');
+                        target.classList.remove('animate-fade-in');
+                        void target.offsetWidth;
+                        target.classList.add('animate-fade-in');
+                    }
                 });
             });
 
-            // 5. Form Submit Mockup (Nanti disambungkan ke tabel 'messages' di Supabase)
-            const form = document.getElementById('contact-form');
-            const successMsg = document.getElementById('success-message');
-            
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                // Logic Supabase.insert() akan diletakkan di sini nantinya.
-                
-                // Tampilkan pesan sukses
-                successMsg.classList.remove('hidden');
-                form.reset();
-                
-                // Sembunyikan kembali setelah 5 detik
-                setTimeout(() => {
-                    successMsg.classList.add('hidden');
-                }, 5000);
-            });
+            // Load data dari Supabase
+            loadClientData();
         });
     </script>
-
-    <!-- 1. Load Supabase JS Library -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-    // ============================================================
-    // KONFIGURASI SUPABASE (SAMA DENGAN ADMINPRO)
-    // ============================================================
-    const SUPABASE_URL = 'https://kxlpvfmsdtgvbnajcchk.supabase.co'; 
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt4bHB2Zm1zZHRndmJuYWpjY2hrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM4MjEyODQsImV4cCI6MjA5OTM5NzI4NH0.B88Mfus3FIbTTQF8Gc3I8RwuhmWWa4Xs-mHPEHYG850';
-    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-    // ============================================================
-    // WEBSITE_ID STATIS (GANTI DENGAN ID WEBSITE KLIEN)
-    // ============================================================
-    const WEBSITE_ID = '030ad70b-4ae0-4b74-a19f-cf5e2d4fe985'; // <--- GANTI DENGAN UUID DARI SUPABASE
-
-    // ============================================================
-    // FUNGSI UNTUK MENGAMBIL DATA DARI SUPABASE
-    // ============================================================
-    async function loadClientData() {
-        try {
-            // 1. Ambil data brand_settings (hero, warna, font, dll)
-            // Karena kita tidak memiliki tabel brand_settings di skema saat ini,
-            // kita akan ambil dari tabel websites langsung.
-            const { data: website, error: websiteError } = await supabaseClient
-                .from('websites')
-                .select('*')
-                .eq('id', WEBSITE_ID)
-                .single();
-
-            if (websiteError) throw websiteError;
-
-            // 2. Ambil daftar halaman (pages)
-            const { data: pages, error: pagesError } = await supabaseClient
-                .from('pages')
-                .select('*')
-                .eq('website_id', WEBSITE_ID)
-                .order('sort_order', { ascending: true });
-
-            if (pagesError) throw pagesError;
-
-            // 3. Ambil daftar layanan (offerings)
-            const { data: offerings, error: offeringsError } = await supabaseClient
-                .from('offerings')
-                .select('*')
-                .eq('website_id', WEBSITE_ID)
-                .order('created_at', { ascending: true });
-
-            if (offeringsError) throw offeringsError;
-
-            // 4. Ambil daftar artikel (posts)
-            const { data: posts, error: postsError } = await supabaseClient
-                .from('posts')
-                .select('*')
-                .eq('website_id', WEBSITE_ID)
-                .eq('status', 'published')
-                .order('created_at', { ascending: false });
-
-            if (postsError) throw postsError;
-
-            // 5. Ambil portofolio
-            const { data: portfolios, error: portfoliosError } = await supabaseClient
-                .from('portfolios')
-                .select('*')
-                .eq('website_id', WEBSITE_ID)
-                .order('created_at', { ascending: false });
-
-            if (portfoliosError) throw portfoliosError;
-
-            // ============================================================
-            // SEKARANG RENDER DATA KE HTML
-            // ============================================================
-            console.log('Website:', website);
-            console.log('Pages:', pages);
-            console.log('Offerings:', offerings);
-            console.log('Posts:', posts);
-            console.log('Portfolios:', portfolios);
-
-            // Contoh: Isi Hero Section
-            const heroTitle = document.getElementById('hero-title');
-            if (heroTitle) heroTitle.textContent = website.tagline || 'Selamat Datang';
-
-            // Contoh: Render Layanan
-            const servicesContainer = document.getElementById('services-container');
-            if (servicesContainer && offerings && offerings.length > 0) {
-                servicesContainer.innerHTML = offerings.map(item => `
-                    <div class="service-card">
-                        <i class="${item.icon_url || 'fas fa-cube'}"></i>
-                        <h3>${item.title}</h3>
-                        <p>${item.description || ''}</p>
-                    </div>
-                `).join('');
-            }
-
-            // Contoh: Render Artikel (Berita)
-            const postsContainer = document.getElementById('posts-container');
-            if (postsContainer && posts && posts.length > 0) {
-                postsContainer.innerHTML = posts.map(post => `
-                    <article class="post-item">
-                        <h2><a href="/post/${post.slug}">${post.title}</a></h2>
-                        <p>${post.excerpt || ''}</p>
-                        <small>${new Date(post.created_at).toLocaleDateString('id-ID')}</small>
-                    </article>
-                `).join('');
-            }
-
-            // ... lanjutkan untuk menu navigasi, footer, dll.
-
-        } catch (error) {
-            console.error('Error loading client data:', error);
-        }
-    }
-
-    // Jalankan saat halaman dimuat
-    document.addEventListener('DOMContentLoaded', loadClientData);
-</script>
 </body>
 </html>
