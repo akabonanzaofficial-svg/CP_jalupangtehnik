@@ -785,5 +785,122 @@
             });
         });
     </script>
+
+    <!-- 1. Load Supabase JS Library -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+    // ============================================================
+    // KONFIGURASI SUPABASE (SAMA DENGAN ADMINPRO)
+    // ============================================================
+    const SUPABASE_URL = 'https://kxlpvfmsdtgvbnajcchk.supabase.co'; 
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt4bHB2Zm1zZHRndmJuYWpjY2hrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM4MjEyODQsImV4cCI6MjA5OTM5NzI4NH0.B88Mfus3FIbTTQF8Gc3I8RwuhmWWa4Xs-mHPEHYG850';
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // ============================================================
+    // WEBSITE_ID STATIS (GANTI DENGAN ID WEBSITE KLIEN)
+    // ============================================================
+    const WEBSITE_ID = '030ad70b-4ae0-4b74-a19f-cf5e2d4fe985'; // <--- GANTI DENGAN UUID DARI SUPABASE
+
+    // ============================================================
+    // FUNGSI UNTUK MENGAMBIL DATA DARI SUPABASE
+    // ============================================================
+    async function loadClientData() {
+        try {
+            // 1. Ambil data brand_settings (hero, warna, font, dll)
+            // Karena kita tidak memiliki tabel brand_settings di skema saat ini,
+            // kita akan ambil dari tabel websites langsung.
+            const { data: website, error: websiteError } = await supabaseClient
+                .from('websites')
+                .select('*')
+                .eq('id', WEBSITE_ID)
+                .single();
+
+            if (websiteError) throw websiteError;
+
+            // 2. Ambil daftar halaman (pages)
+            const { data: pages, error: pagesError } = await supabaseClient
+                .from('pages')
+                .select('*')
+                .eq('website_id', WEBSITE_ID)
+                .order('sort_order', { ascending: true });
+
+            if (pagesError) throw pagesError;
+
+            // 3. Ambil daftar layanan (offerings)
+            const { data: offerings, error: offeringsError } = await supabaseClient
+                .from('offerings')
+                .select('*')
+                .eq('website_id', WEBSITE_ID)
+                .order('created_at', { ascending: true });
+
+            if (offeringsError) throw offeringsError;
+
+            // 4. Ambil daftar artikel (posts)
+            const { data: posts, error: postsError } = await supabaseClient
+                .from('posts')
+                .select('*')
+                .eq('website_id', WEBSITE_ID)
+                .eq('status', 'published')
+                .order('created_at', { ascending: false });
+
+            if (postsError) throw postsError;
+
+            // 5. Ambil portofolio
+            const { data: portfolios, error: portfoliosError } = await supabaseClient
+                .from('portfolios')
+                .select('*')
+                .eq('website_id', WEBSITE_ID)
+                .order('created_at', { ascending: false });
+
+            if (portfoliosError) throw portfoliosError;
+
+            // ============================================================
+            // SEKARANG RENDER DATA KE HTML
+            // ============================================================
+            console.log('Website:', website);
+            console.log('Pages:', pages);
+            console.log('Offerings:', offerings);
+            console.log('Posts:', posts);
+            console.log('Portfolios:', portfolios);
+
+            // Contoh: Isi Hero Section
+            const heroTitle = document.getElementById('hero-title');
+            if (heroTitle) heroTitle.textContent = website.tagline || 'Selamat Datang';
+
+            // Contoh: Render Layanan
+            const servicesContainer = document.getElementById('services-container');
+            if (servicesContainer && offerings && offerings.length > 0) {
+                servicesContainer.innerHTML = offerings.map(item => `
+                    <div class="service-card">
+                        <i class="${item.icon_url || 'fas fa-cube'}"></i>
+                        <h3>${item.title}</h3>
+                        <p>${item.description || ''}</p>
+                    </div>
+                `).join('');
+            }
+
+            // Contoh: Render Artikel (Berita)
+            const postsContainer = document.getElementById('posts-container');
+            if (postsContainer && posts && posts.length > 0) {
+                postsContainer.innerHTML = posts.map(post => `
+                    <article class="post-item">
+                        <h2><a href="/post/${post.slug}">${post.title}</a></h2>
+                        <p>${post.excerpt || ''}</p>
+                        <small>${new Date(post.created_at).toLocaleDateString('id-ID')}</small>
+                    </article>
+                `).join('');
+            }
+
+            // ... lanjutkan untuk menu navigasi, footer, dll.
+
+        } catch (error) {
+            console.error('Error loading client data:', error);
+        }
+    }
+
+    // Jalankan saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', loadClientData);
+</script>
 </body>
 </html>
