@@ -86,23 +86,30 @@
         .slider-container {
             position: relative;
             width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
             overflow: hidden;
             border-radius: 1.5rem;
             background: #000;
+            aspect-ratio: 16/9;
+            max-height: 480px;
         }
 
         .slider-track {
             display: flex;
             transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             will-change: transform;
+            height: 100%;
         }
 
         .slider-slide {
             min-width: 100%;
             position: relative;
-            aspect-ratio: 16/9;
             flex-shrink: 0;
+            height: 100%;
             background: #1a1a1a;
+            overflow: hidden;
+            cursor: pointer;
         }
 
         .slider-slide img {
@@ -110,6 +117,18 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* ZOOM EFFECT - HOVER */
+        .slider-slide:hover img {
+            transform: scale(1.08);
+        }
+
+        /* ZOOM EFFECT - ACTIVE/CLICK */
+        .slider-slide.zoomed img {
+            transform: scale(1.15);
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .slider-slide .video-wrapper {
@@ -133,14 +152,14 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.9);
             border: none;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
             cursor: pointer;
-            font-size: 18px;
+            font-size: 16px;
             color: #1a1a1a;
             z-index: 10;
             transition: all 0.3s;
@@ -153,22 +172,22 @@
             transform: translateY(-50%) scale(1.05);
             box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
         }
-        .slider-btn.prev { left: 16px; }
-        .slider-btn.next { right: 16px; }
+        .slider-btn.prev { left: 12px; }
+        .slider-btn.next { right: 12px; }
 
         /* Indikator Dots */
         .slider-dots {
             position: absolute;
-            bottom: 20px;
+            bottom: 16px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 10px;
+            gap: 8px;
             z-index: 10;
         }
         .slider-dots .dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.5);
             cursor: pointer;
@@ -187,56 +206,110 @@
         /* Label slide */
         .slider-label {
             position: absolute;
-            bottom: 70px;
-            left: 30px;
+            bottom: 50px;
+            left: 24px;
             z-index: 10;
             color: white;
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+            pointer-events: none;
         }
         .slider-label .badge {
             display: inline-block;
-            padding: 4px 14px;
+            padding: 3px 12px;
             background: rgba(34, 197, 94, 0.85);
             border-radius: 20px;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         .slider-label h3 {
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 700;
             font-family: 'Outfit', sans-serif;
         }
         .slider-label p {
-            font-size: 13px;
+            font-size: 12px;
             opacity: 0.85;
             margin-top: 2px;
         }
 
+        /* Zoom indicator */
+        .slider-zoom-hint {
+            position: absolute;
+            bottom: 50px;
+            right: 24px;
+            z-index: 10;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.7);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .slider-slide:hover .slider-zoom-hint {
+            opacity: 1;
+        }
+        .slider-zoom-hint i {
+            font-size: 12px;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
-            .slider-btn {
-                width: 36px;
-                height: 36px;
-                font-size: 14px;
+            .slider-container {
+                max-height: 300px;
+                border-radius: 1rem;
             }
-            .slider-btn.prev { left: 8px; }
-            .slider-btn.next { right: 8px; }
+            .slider-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 12px;
+            }
+            .slider-btn.prev { left: 6px; }
+            .slider-btn.next { right: 6px; }
             .slider-label {
-                bottom: 50px;
-                left: 16px;
+                bottom: 36px;
+                left: 14px;
             }
             .slider-label h3 {
-                font-size: 16px;
+                font-size: 14px;
             }
             .slider-label p {
-                font-size: 11px;
+                font-size: 10px;
+            }
+            .slider-label .badge {
+                font-size: 8px;
+                padding: 2px 10px;
             }
             .slider-dots .dot {
-                width: 10px;
-                height: 10px;
+                width: 8px;
+                height: 8px;
+            }
+            .slider-zoom-hint {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slider-container {
+                max-height: 220px;
+            }
+            .slider-label {
+                bottom: 28px;
+                left: 10px;
+            }
+            .slider-label h3 {
+                font-size: 12px;
+            }
+            .slider-label p {
+                font-size: 9px;
             }
         }
     </style>
@@ -306,9 +379,9 @@
                         </a>
                     </div>
                 </div>
-                <div class="w-full lg:w-1/2 relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <div class="w-full lg:w-1/2 relative flex justify-center" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                     <!-- ===== SLIDER / CAROUSEL ===== -->
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white w-full max-w-[900px]">
                         <div class="slider-container" id="heroSlider">
                             <div class="slider-track" id="sliderTrack">
                                 
@@ -328,6 +401,9 @@
                                         <h3>Jalupang Teknik</h3>
                                         <p>Solusi Teknologi Lingkungan</p>
                                     </div>
+                                    <div class="slider-zoom-hint">
+                                        <i class="fas fa-expand"></i> Zoom
+                                    </div>
                                 </div>
 
                                 <!-- SLIDE 2: GAMBAR 1 -->
@@ -341,6 +417,9 @@
                                         <span class="badge"><i class="fas fa-building mr-1"></i> Kantor</span>
                                         <h3>Kantor Pemasaran</h3>
                                         <p>Setra Sari Mall, Bandung</p>
+                                    </div>
+                                    <div class="slider-zoom-hint">
+                                        <i class="fas fa-expand"></i> Zoom
                                     </div>
                                 </div>
 
@@ -356,6 +435,9 @@
                                         <h3>Pengolahan Air Limbah</h3>
                                         <p>IPAL Industri Terpadu</p>
                                     </div>
+                                    <div class="slider-zoom-hint">
+                                        <i class="fas fa-expand"></i> Zoom
+                                    </div>
                                 </div>
 
                                 <!-- SLIDE 4: GAMBAR 3 -->
@@ -369,6 +451,9 @@
                                         <span class="badge"><i class="fas fa-solar-panel mr-1"></i> Energi</span>
                                         <h3>PLTS Atap</h3>
                                         <p>Energi Terbarukan untuk Industri</p>
+                                    </div>
+                                    <div class="slider-zoom-hint">
+                                        <i class="fas fa-expand"></i> Zoom
                                     </div>
                                 </div>
 
@@ -384,6 +469,9 @@
                                         <h3>Workshop Teknik</h3>
                                         <p>Citalem, Bandung Barat</p>
                                     </div>
+                                    <div class="slider-zoom-hint">
+                                        <i class="fas fa-expand"></i> Zoom
+                                    </div>
                                 </div>
 
                                 <!-- SLIDE 6: GAMBAR 5 -->
@@ -397,6 +485,9 @@
                                         <span class="badge"><i class="fas fa-recycle mr-1"></i> Ekonomi Sirkular</span>
                                         <h3>Produksi Kompos</h3>
                                         <p>Pengolahan Limbah Organik</p>
+                                    </div>
+                                    <div class="slider-zoom-hint">
+                                        <i class="fas fa-expand"></i> Zoom
                                     </div>
                                 </div>
 
@@ -923,6 +1014,22 @@
         const WEBSITE_ID = '030ad70b-4ae0-4b74-a19f-cf5e2d4fe985';
 
         // ============================================================
+        // ZOOM EFFECT ON CLICK
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slider-slide');
+            
+            slides.forEach(function(slide) {
+                slide.addEventListener('click', function(e) {
+                    if (e.target.closest('.slider-btn') || e.target.closest('.slider-dots')) {
+                        return;
+                    }
+                    this.classList.toggle('zoomed');
+                });
+            });
+        });
+
+        // ============================================================
         // SLIDER
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
@@ -958,6 +1065,11 @@
                     if (index >= totalSlides) index = 0;
                     currentIndex = index;
                     track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+
+                    // Reset zoom pada semua slide saat pindah
+                    document.querySelectorAll('.slider-slide.zoomed').forEach(function(el) {
+                        el.classList.remove('zoomed');
+                    });
 
                     const dots = dotsContainer ? dotsContainer.querySelectorAll('.dot') : [];
                     dots.forEach(function(dot, i) {
