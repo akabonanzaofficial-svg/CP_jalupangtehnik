@@ -190,129 +190,41 @@
                 </div>
             </div>
 
-            <!-- Grid Artikel (Contoh Data) -->
+            <!-- Grid Artikel -->
             <div id="articlesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Artikel 1 -->
-                <article class="article-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100" data-aos="fade-up">
-                    <div class="image-wrapper relative h-56 bg-gray-200">
-                        <img 
-                            src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800&q=80" 
-                            alt="Teknologi Pengolahan Air Limbah"
-                            class="w-full h-full object-cover"
-                            loading="lazy"
-                        />
-                        <div class="absolute top-4 left-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">
-                                <i class="fas fa-microchip mr-1"></i> Teknologi
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center text-xs text-gray-400 mb-3">
-                            <span><i class="far fa-calendar mr-1"></i> 15 Maret 2026</span>
-                            <span class="mx-2">•</span>
-                            <span><i class="far fa-clock mr-1"></i> 5 min baca</span>
-                        </div>
-                        <h3 class="font-heading text-xl font-bold text-earth mb-3 hover:text-green-600 transition-colors">
-                            <a href="article-detail.html?id=1" class="hover:underline">Inovasi Teknologi Pengolahan Air Limbah Terbaru</a>
-                        </h3>
-                        <p class="text-gray-500 text-sm mb-4 line-clamp-3">Teknologi terbaru dalam pengolahan air limbah industri yang ramah lingkungan dan efisien.</p>
-                        <div class="flex items-center justify-between">
-                            <a href="article-detail.html?id=1" class="text-green-600 font-semibold text-sm hover:text-green-800 transition-colors inline-flex items-center gap-1">
-                                Baca Selengkapnya <i class="fas fa-arrow-right text-xs"></i>
-                            </a>
-                            <span class="text-xs text-gray-400">
-                                <i class="fas fa-user mr-1"></i> Tim Jalupang
-                            </span>
-                        </div>
-                    </div>
-                </article>
+                <!-- Akan diisi oleh JavaScript -->
+            </div>
 
-                <!-- Artikel 2 -->
-                <article class="article-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100" data-aos="fade-up" data-aos-delay="100">
-                    <div class="image-wrapper relative h-56 bg-gray-200">
-                        <img 
-                            src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80" 
-                            alt="PLTS Atap"
-                            class="w-full h-full object-cover"
-                            loading="lazy"
-                        />
-                        <div class="absolute top-4 left-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-700">
-                                <i class="fas fa-solar-panel mr-1"></i> Energi
-                            </span>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-yellow-500 text-white">
-                                <i class="fas fa-star mr-1"></i> Unggulan
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center text-xs text-gray-400 mb-3">
-                            <span><i class="far fa-calendar mr-1"></i> 10 Maret 2026</span>
-                            <span class="mx-2">•</span>
-                            <span><i class="far fa-clock mr-1"></i> 6 min baca</span>
-                        </div>
-                        <h3 class="font-heading text-xl font-bold text-earth mb-3 hover:text-green-600 transition-colors">
-                            <a href="article-detail.html?id=2" class="hover:underline">5 Manfaat PLTS Atap untuk Industri</a>
-                        </h3>
-                        <p class="text-gray-500 text-sm mb-4 line-clamp-3">Manfaat penggunaan panel surya atap untuk industri dan penghematan biaya energi.</p>
-                        <div class="flex items-center justify-between">
-                            <a href="article-detail.html?id=2" class="text-green-600 font-semibold text-sm hover:text-green-800 transition-colors inline-flex items-center gap-1">
-                                Baca Selengkapnya <i class="fas fa-arrow-right text-xs"></i>
-                            </a>
-                            <span class="text-xs text-gray-400">
-                                <i class="fas fa-user mr-1"></i> Tim Jalupang
-                            </span>
-                        </div>
-                    </div>
-                </article>
+            <!-- Loading State -->
+            <div id="loadingState" class="text-center py-16">
+                <div class="w-16 h-16 border-4 border-green-200 border-t-green-600 rounded-full animate-spin mx-auto mb-4"></div>
+                <p class="text-gray-500">Memuat artikel...</p>
+            </div>
 
-                <!-- Artikel 3 -->
-                <article class="article-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100" data-aos="fade-up" data-aos-delay="200">
-                    <div class="image-wrapper relative h-56 bg-gray-200">
-                        <img 
-                            src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80" 
-                            alt="Ekonomi Sirkular"
-                            class="w-full h-full object-cover"
-                            loading="lazy"
-                        />
-                        <div class="absolute top-4 left-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-700">
-                                <i class="fas fa-recycle mr-1"></i> Limbah
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center text-xs text-gray-400 mb-3">
-                            <span><i class="far fa-calendar mr-1"></i> 5 Maret 2026</span>
-                            <span class="mx-2">•</span>
-                            <span><i class="far fa-clock mr-1"></i> 7 min baca</span>
-                        </div>
-                        <h3 class="font-heading text-xl font-bold text-earth mb-3 hover:text-green-600 transition-colors">
-                            <a href="article-detail.html?id=3" class="hover:underline">Pengelolaan Limbah Berbasis Ekonomi Sirkular</a>
-                        </h3>
-                        <p class="text-gray-500 text-sm mb-4 line-clamp-3">Mengubah limbah menjadi sumber daya bernilai melalui pendekatan ekonomi sirkular.</p>
-                        <div class="flex items-center justify-between">
-                            <a href="article-detail.html?id=3" class="text-green-600 font-semibold text-sm hover:text-green-800 transition-colors inline-flex items-center gap-1">
-                                Baca Selengkapnya <i class="fas fa-arrow-right text-xs"></i>
-                            </a>
-                            <span class="text-xs text-gray-400">
-                                <i class="fas fa-user mr-1"></i> Tim Jalupang
-                            </span>
-                        </div>
-                    </div>
-                </article>
+            <!-- Empty State -->
+            <div id="emptyState" class="text-center py-16 hidden">
+                <div class="text-6xl mb-4">📚</div>
+                <h3 class="text-xl font-bold text-earth mb-2">Belum Ada Artikel</h3>
+                <p class="text-gray-500">Belum ada artikel yang dipublikasikan.</p>
+            </div>
+
+            <!-- No Results State -->
+            <div id="noResultsState" class="text-center py-16 hidden">
+                <div class="text-6xl mb-4">🔍</div>
+                <h3 class="text-xl font-bold text-earth mb-2">Artikel Tidak Ditemukan</h3>
+                <p class="text-gray-500">Tidak ada artikel yang sesuai dengan pencarian Anda.</p>
+                <button onclick="resetSearch()" class="mt-4 px-6 py-2 bg-green-600 text-white rounded-full text-sm hover:bg-green-700 transition-colors">
+                    Reset Pencarian
+                </button>
             </div>
 
             <!-- Pagination -->
-            <div class="flex justify-center items-center gap-3 mt-12">
-                <button class="pagination-btn px-4 py-2 rounded-lg border border-gray-200 text-gray-600 text-sm font-medium disabled:opacity-40 disabled:cursor-not-allowed" disabled>
+            <div class="flex justify-center items-center gap-3 mt-12" id="pagination">
+                <button id="prevPage" class="pagination-btn px-4 py-2 rounded-lg border border-gray-200 text-gray-600 text-sm font-medium disabled:opacity-40 disabled:cursor-not-allowed" disabled>
                     <i class="fas fa-chevron-left mr-1"></i> Sebelumnya
                 </button>
-                <span class="text-sm text-gray-500 font-medium">Halaman 1 dari 1</span>
-                <button class="pagination-btn px-4 py-2 rounded-lg border border-gray-200 text-gray-600 text-sm font-medium disabled:opacity-40 disabled:cursor-not-allowed" disabled>
+                <span id="pageInfo" class="text-sm text-gray-500 font-medium">Halaman 1 dari 1</span>
+                <button id="nextPage" class="pagination-btn px-4 py-2 rounded-lg border border-gray-200 text-gray-600 text-sm font-medium disabled:opacity-40 disabled:cursor-not-allowed">
                     Selanjutnya <i class="fas fa-chevron-right ml-1"></i>
                 </button>
             </div>
@@ -379,13 +291,285 @@
             </div>
             <div class="border-t border-gray-800 pt-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
                 <p>&copy; 2026 PT Jalupang Teknik Lingkungan. All rights reserved.</p>
-                <p class="mt-2 md:mt-0">Powered by <span class="font-semibold text-gray-400">GitHub Pages</span></p>
+                <p class="mt-2 md:mt-0">Powered by <span class="font-semibold text-gray-400">Google Sheets</span></p>
             </div>
         </div>
     </footer>
 
+    <!-- ========== SCRIPTS ========== -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
+        // ============================================================
+        // KONFIGURASI GOOGLE SHEETS (URL ANDA SUDAH DI MASUKKAN)
+        // ============================================================
+        const GOOGLE_SHEETS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQVHSiOewY2c29ywcbEfKk_aqTUaa86ZrNeRU9uFGP7TU1qAy0c0swoGNA6MXKj4gj8vsvzl8CdWyjm/pub?output=csv';
+
+        // ============================================================
+        // BLOG FUNCTIONS
+        // ============================================================
+        let allPosts = [];
+        let filteredPosts = [];
+        let currentPage = 1;
+        const postsPerPage = 6;
+        let currentCategory = 'all';
+        let searchQuery = '';
+
+        // Parse CSV
+        function parseCSV(csvText) {
+            const lines = csvText.split('\n');
+            const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+            
+            const result = [];
+            for (let i = 1; i < lines.length; i++) {
+                if (!lines[i].trim()) continue;
+                
+                const values = [];
+                let current = '';
+                let inQuotes = false;
+                for (let char of lines[i]) {
+                    if (char === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        values.push(current.trim());
+                        current = '';
+                    } else {
+                        current += char;
+                    }
+                }
+                values.push(current.trim());
+                
+                const row = {};
+                for (let j = 0; j < headers.length && j < values.length; j++) {
+                    let value = values[j];
+                    if (value.startsWith('"') && value.endsWith('"')) {
+                        value = value.slice(1, -1);
+                    }
+                    if (value.toUpperCase() === 'TRUE') value = true;
+                    else if (value.toUpperCase() === 'FALSE') value = false;
+                    row[headers[j]] = value;
+                }
+                result.push(row);
+            }
+            return result;
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            if (!dateString) return 'Tanggal tidak tersedia';
+            try {
+                const date = new Date(dateString);
+                if (isNaN(date.getTime())) return 'Tanggal tidak valid';
+                return date.toLocaleDateString('id-ID', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                });
+            } catch {
+                return 'Tanggal tidak valid';
+            }
+        }
+
+        // Get category icon
+        function getCategoryIcon(category) {
+            const icons = {
+                'teknologi': 'fa-microchip',
+                'lingkungan': 'fa-leaf',
+                'energi': 'fa-solar-panel',
+                'limbah': 'fa-recycle',
+                'berita': 'fa-newspaper'
+            };
+            return icons[category?.toLowerCase()] || 'fa-file-alt';
+        }
+
+        // Get category color
+        function getCategoryColor(category) {
+            const colors = {
+                'teknologi': 'bg-blue-100 text-blue-700',
+                'lingkungan': 'bg-green-100 text-green-700',
+                'energi': 'bg-yellow-100 text-yellow-700',
+                'limbah': 'bg-purple-100 text-purple-700',
+                'berita': 'bg-red-100 text-red-700'
+            };
+            return colors[category?.toLowerCase()] || 'bg-gray-100 text-gray-700';
+        }
+
+        // Render articles
+        function renderArticles() {
+            const grid = document.getElementById('articlesGrid');
+            const loading = document.getElementById('loadingState');
+            const empty = document.getElementById('emptyState');
+            const noResults = document.getElementById('noResultsState');
+            const prevBtn = document.getElementById('prevPage');
+            const nextBtn = document.getElementById('nextPage');
+            const pageInfo = document.getElementById('pageInfo');
+
+            let filtered = allPosts.filter(post => post.status?.toLowerCase() === 'published');
+
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(post => 
+                    post.category?.toLowerCase() === currentCategory.toLowerCase()
+                );
+            }
+
+            if (searchQuery.trim()) {
+                const query = searchQuery.toLowerCase().trim();
+                filtered = filtered.filter(post => 
+                    (post.title?.toLowerCase().includes(query) || false) ||
+                    (post.excerpt?.toLowerCase().includes(query) || false) ||
+                    (post.content?.toLowerCase().includes(query) || false) ||
+                    (post.category?.toLowerCase().includes(query) || false)
+                );
+            }
+
+            filteredPosts = filtered;
+
+            if (filtered.length === 0) {
+                if (allPosts.filter(p => p.status?.toLowerCase() === 'published').length === 0) {
+                    empty.classList.remove('hidden');
+                    noResults.classList.add('hidden');
+                    grid.classList.add('hidden');
+                } else {
+                    empty.classList.add('hidden');
+                    noResults.classList.remove('hidden');
+                    grid.classList.add('hidden');
+                }
+                loading.classList.add('hidden');
+                prevBtn.disabled = true;
+                nextBtn.disabled = true;
+                pageInfo.textContent = 'Halaman 1 dari 1';
+                return;
+            }
+
+            empty.classList.add('hidden');
+            noResults.classList.add('hidden');
+            grid.classList.remove('hidden');
+            loading.classList.add('hidden');
+
+            const totalPages = Math.ceil(filtered.length / postsPerPage);
+            if (currentPage > totalPages) currentPage = totalPages;
+            if (currentPage < 1) currentPage = 1;
+
+            const start = (currentPage - 1) * postsPerPage;
+            const end = start + postsPerPage;
+            const pagePosts = filtered.slice(start, end);
+
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === totalPages;
+            pageInfo.textContent = `Halaman ${currentPage} dari ${totalPages}`;
+
+            if (pagePosts.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <p class="text-gray-500">Tidak ada artikel di halaman ini.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = pagePosts.map(post => `
+                <article class="article-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100" data-aos="fade-up">
+                    <div class="image-wrapper relative h-56 bg-gray-200">
+                        <img 
+                            src="${post.featured_image || 'https://images.unsplash.com/photo-1518623489648-a173ef7824f3?w=800&q=80'}" 
+                            alt="${post.title || 'Artikel'}"
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1518623489648-a173ef7824f3?w=800&q=80'"
+                        />
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(post.category)}">
+                                <i class="fas ${getCategoryIcon(post.category)} mr-1"></i>
+                                ${post.category || 'Umum'}
+                            </span>
+                        </div>
+                        ${post.is_featured === true ? `
+                            <div class="absolute top-4 right-4">
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-yellow-500 text-white">
+                                    <i class="fas fa-star mr-1"></i> Unggulan
+                                </span>
+                            </div>
+                        ` : ''}
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-xs text-gray-400 mb-3">
+                            <span><i class="far fa-calendar mr-1"></i> ${formatDate(post.created_at)}</span>
+                            ${post.read_time ? `
+                                <span class="mx-2">•</span>
+                                <span><i class="far fa-clock mr-1"></i> ${post.read_time} min baca</span>
+                            ` : ''}
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-earth mb-3 line-clamp-2 hover:text-green-600 transition-colors">
+                            <a href="article-detail.html?id=${post.id || encodeURIComponent(post.slug || '')}" class="hover:underline">${post.title || 'Judul Artikel'}</a>
+                        </h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-3">${post.excerpt || (post.content ? post.content.substring(0, 150).replace(/<[^>]*>/g, '') : '')}</p>
+                        <div class="flex items-center justify-between">
+                            <a href="article-detail.html?id=${post.id || encodeURIComponent(post.slug || '')}" class="text-green-600 font-semibold text-sm hover:text-green-800 transition-colors inline-flex items-center gap-1">
+                                Baca Selengkapnya <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                            ${post.author ? `
+                                <span class="text-xs text-gray-400">
+                                    <i class="fas fa-user mr-1"></i> ${post.author}
+                                </span>
+                            ` : ''}
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+
+            AOS.refresh();
+        }
+
+        // Load posts from Google Sheets
+        async function loadPosts() {
+            const loading = document.getElementById('loadingState');
+            const grid = document.getElementById('articlesGrid');
+            
+            loading.classList.remove('hidden');
+            grid.innerHTML = '';
+
+            try {
+                const response = await fetch(GOOGLE_SHEETS_CSV_URL);
+                if (!response.ok) throw new Error('Gagal mengambil data dari Google Sheets');
+                
+                const csvText = await response.text();
+                const data = parseCSV(csvText);
+                
+                allPosts = data || [];
+                currentPage = 1;
+                renderArticles();
+
+                console.log('✅', allPosts.length, 'artikel dimuat dari Google Sheets');
+
+            } catch (error) {
+                console.error('❌ Error loading posts:', error);
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-16">
+                        <div class="text-4xl mb-4">⚠️</div>
+                        <p class="text-gray-500">Gagal memuat artikel dari Google Sheets.</p>
+                        <p class="text-gray-400 text-sm mt-2">Pastikan sheet sudah dipublish ke web.</p>
+                        <button onclick="location.reload()" class="mt-4 px-6 py-2 bg-green-600 text-white rounded-full text-sm hover:bg-green-700 transition-colors">
+                            Coba Lagi
+                        </button>
+                    </div>
+                `;
+                loading.classList.add('hidden');
+            } finally {
+                loading.classList.add('hidden');
+            }
+        }
+
+        // Reset search
+        function resetSearch() {
+            document.getElementById('searchArticles').value = '';
+            searchQuery = '';
+            currentPage = 1;
+            renderArticles();
+        }
+
+        // ============================================================
+        // EVENT LISTENERS
+        // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
             // AOS
             AOS.init({ once: true, offset: 50, duration: 800 });
@@ -426,8 +610,9 @@
                     this.classList.add('active', 'bg-green-600', 'text-white', 'border-green-600');
                     this.classList.remove('border-gray-200', 'text-gray-600');
 
-                    const category = this.dataset.category;
-                    filterArticles(category);
+                    currentCategory = this.dataset.category;
+                    currentPage = 1;
+                    renderArticles();
                 });
             });
 
@@ -435,12 +620,31 @@
             const searchInput = document.getElementById('searchArticles');
             if (searchInput) {
                 searchInput.addEventListener('input', function() {
-                    const query = this.value.toLowerCase().trim();
-                    searchArticles(query);
+                    searchQuery = this.value;
+                    currentPage = 1;
+                    renderArticles();
                 });
             }
 
-            // Newsletter (simpan ke localStorage)
+            // Pagination
+            document.getElementById('prevPage').addEventListener('click', function() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderArticles();
+                    window.scrollTo({ top: 400, behavior: 'smooth' });
+                }
+            });
+
+            document.getElementById('nextPage').addEventListener('click', function() {
+                const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderArticles();
+                    window.scrollTo({ top: 400, behavior: 'smooth' });
+                }
+            });
+
+            // Newsletter
             const newsletterForm = document.getElementById('newsletterForm');
             if (newsletterForm) {
                 newsletterForm.addEventListener('submit', function(e) {
@@ -462,31 +666,8 @@
                 });
             }
 
-            // Filter function (demo)
-            function filterArticles(category) {
-                const cards = document.querySelectorAll('.article-card');
-                cards.forEach(function(card) {
-                    const cat = card.querySelector('.absolute.top-4.left-4 span')?.textContent?.trim() || '';
-                    if (category === 'all' || cat.toLowerCase().includes(category)) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            }
-
-            function searchArticles(query) {
-                const cards = document.querySelectorAll('.article-card');
-                cards.forEach(function(card) {
-                    const title = card.querySelector('h3 a')?.textContent?.toLowerCase() || '';
-                    const excerpt = card.querySelector('p')?.textContent?.toLowerCase() || '';
-                    if (title.includes(query) || excerpt.includes(query) || query === '') {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            }
+            // Load posts
+            loadPosts();
         });
     </script>
 </body>
