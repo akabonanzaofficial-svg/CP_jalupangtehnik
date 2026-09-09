@@ -5,22 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CMS Artikel | Jalupang Teknik</title>
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- ===== QUILL.JS RICH TEXT EDITOR ===== -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     
     <style>
         body { background: #f0fdf4; }
         .glass { background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); }
-        .btn-primary { background: #16a34a; color: white; padding: 8px 20px; border-radius: 8px; transition: all 0.2s; }
-        .btn-primary:hover { background: #15803d; transform: translateY(-1px); }
-        .btn-danger { background: #dc2626; color: white; padding: 8px 20px; border-radius: 8px; transition: all 0.2s; }
-        .btn-danger:hover { background: #b91c1c; }
-        .btn-secondary { background: #6b7280; color: white; padding: 8px 20px; border-radius: 8px; transition: all 0.2s; }
-        .btn-secondary:hover { background: #4b5563; }
         .card { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; }
+        .btn-primary { background: #16a34a; color: white; padding: 10px 24px; border-radius: 8px; transition: all 0.2s; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-primary:hover { background: #15803d; transform: translateY(-1px); }
+        .btn-danger { background: #dc2626; color: white; padding: 6px 14px; border-radius: 6px; transition: all 0.2s; border: none; cursor: pointer; font-size: 13px; }
+        .btn-danger:hover { background: #b91c1c; }
+        .btn-edit { background: #3b82f6; color: white; padding: 6px 14px; border-radius: 6px; transition: all 0.2s; border: none; cursor: pointer; font-size: 13px; }
+        .btn-edit:hover { background: #2563eb; }
+        .btn-view { background: #8b5cf6; color: white; padding: 6px 14px; border-radius: 6px; transition: all 0.2s; border: none; cursor: pointer; font-size: 13px; }
+        .btn-view:hover { background: #7c3aed; }
         .status-published { background: #dcfce7; color: #166534; padding: 2px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
         .status-draft { background: #fef3c7; color: #92400e; padding: 2px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
-        .preview-text { max-height: 100px; overflow: hidden; text-overflow: ellipsis; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 4px; }
+        .form-group input, .form-group select { width: 100%; padding: 10px 14px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; transition: border 0.2s; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: #16a34a; box-shadow: 0 0 0 3px rgba(22,163,74,0.1); }
+        .hidden { display: none !important; }
+        .message { padding: 12px 16px; border-radius: 8px; margin-top: 12px; }
+        .message-success { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+        .message-error { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+        
+        /* ===== QUILL EDITOR STYLING ===== */
+        #editor-container {
+            height: 350px;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+            background: white;
+        }
+        #editor-container .ql-editor {
+            min-height: 300px;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        #editor-container .ql-toolbar {
+            border-radius: 8px 8px 0 0;
+            border-color: #d1d5db;
+            background: #f9fafb;
+        }
+        #editor-container .ql-container {
+            border-radius: 0 0 8px 8px;
+            border-color: #d1d5db;
+        }
+        .ql-editor h2 { font-size: 24px; font-weight: 700; margin: 16px 0 8px; }
+        .ql-editor h3 { font-size: 20px; font-weight: 600; margin: 14px 0 6px; }
+        .ql-editor p { margin-bottom: 12px; }
+        .ql-editor ul, .ql-editor ol { padding-left: 24px; margin-bottom: 12px; }
+        .ql-editor li { margin-bottom: 4px; }
+        .ql-editor blockquote { border-left: 4px solid #16a34a; padding-left: 16px; margin: 12px 0; color: #4b5563; }
+        .ql-editor a { color: #16a34a; text-decoration: underline; }
+        .ql-editor img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+        
+        /* ===== TOOLBAR CUSTOM ===== */
+        .ql-toolbar .ql-formats { margin-right: 4px; }
+        .ql-toolbar button { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+        .ql-toolbar button svg { width: 18px; height: 18px; }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            #editor-container { height: 250px; }
+            #editor-container .ql-editor { min-height: 200px; }
+            .ql-toolbar .ql-formats { margin-right: 2px; }
+            .ql-toolbar button { width: 28px; height: 28px; }
+            .ql-toolbar button svg { width: 14px; height: 14px; }
+        }
     </style>
 </head>
 <body>
@@ -29,7 +89,7 @@
 <nav class="fixed w-full z-50 glass border-b border-gray-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
-            <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+            <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-lg bg-green-600 flex items-center justify-center text-white">
                     <i class="fas fa-leaf"></i>
                 </div>
@@ -48,28 +108,34 @@
 </nav>
 
 <!-- ========== MAIN CONTENT ========== -->
-<div class="pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="pt-24 pb-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <!-- Tombol Tambah Artikel -->
+    <!-- Header -->
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-bold text-gray-800">📝 Kelola Artikel</h1>
-        <button onclick="showForm()" class="btn-primary flex items-center gap-2">
+        <button onclick="showForm()" class="btn-primary">
             <i class="fas fa-plus"></i> Artikel Baru
         </button>
     </div>
 
-    <!-- Form Artikel -->
-    <div id="articleForm" class="card mb-6 hidden">
-        <h2 id="formTitle" class="text-xl font-bold text-gray-800 mb-4">Tambah Artikel Baru</h2>
+    <!-- ========== FORM TAMBAH/EDIT ========== -->
+    <div id="articleForm" class="card hidden mb-6">
+        <div class="flex justify-between items-center mb-4">
+            <h2 id="formTitle" class="text-xl font-bold text-gray-800">Tambah Artikel Baru</h2>
+            <button onclick="hideForm()" class="text-gray-400 hover:text-gray-600 text-xl">&times;</button>
+        </div>
+        
+        <div id="formMessage" class="hidden"></div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Judul *</label>
-                <input id="inputTitle" type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none" placeholder="Judul Artikel">
+            <div class="form-group md:col-span-2">
+                <label for="inputTitle">Judul Artikel *</label>
+                <input id="inputTitle" type="text" placeholder="Masukkan judul artikel" />
             </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Kategori</label>
-                <select id="inputCategory" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none">
+            
+            <div class="form-group">
+                <label for="inputCategory">Kategori</label>
+                <select id="inputCategory">
                     <option value="teknologi">Teknologi</option>
                     <option value="lingkungan">Lingkungan</option>
                     <option value="energi">Energi</option>
@@ -77,67 +143,88 @@
                     <option value="berita">Berita</option>
                 </select>
             </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Author</label>
-                <input id="inputAuthor" type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none" placeholder="Nama Penulis">
+            
+            <div class="form-group">
+                <label for="inputAuthor">Author</label>
+                <input id="inputAuthor" type="text" placeholder="Nama penulis" />
             </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Read Time (menit)</label>
-                <input id="inputReadTime" type="number" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none" placeholder="5" value="5">
+            
+            <div class="form-group">
+                <label for="inputReadTime">Read Time (menit)</label>
+                <input id="inputReadTime" type="number" placeholder="5" value="5" />
             </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                <select id="inputStatus" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none">
+            
+            <div class="form-group">
+                <label for="inputStatus">Status</label>
+                <select id="inputStatus">
                     <option value="published">Published</option>
                     <option value="draft">Draft</option>
                 </select>
             </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Featured</label>
-                <select id="inputFeatured" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none">
-                    <option value="TRUE">Ya</option>
+            
+            <div class="form-group">
+                <label for="inputFeatured">Featured</label>
+                <select id="inputFeatured">
                     <option value="FALSE">Tidak</option>
+                    <option value="TRUE">Ya</option>
                 </select>
             </div>
-            <div class="md:col-span-2">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Excerpt (Ringkasan)</label>
-                <input id="inputExcerpt" type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none" placeholder="Ringkasan singkat artikel...">
+            
+            <div class="form-group md:col-span-2">
+                <label for="inputExcerpt">Excerpt (Ringkasan)</label>
+                <input id="inputExcerpt" type="text" placeholder="Ringkasan singkat artikel (max 160 karakter)" />
             </div>
-            <div class="md:col-span-2">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Gambar (URL)</label>
-                <input id="inputImage" type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none" placeholder="https://images.unsplash.com/...">
+            
+            <div class="form-group md:col-span-2">
+                <label for="inputImage">Gambar (URL)</label>
+                <input id="inputImage" type="text" placeholder="https://images.unsplash.com/..." />
             </div>
-            <div class="md:col-span-2">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Konten (HTML) *</label>
-                <textarea id="inputContent" rows="12" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none font-mono text-sm" placeholder="<h2>Judul</h2><p>Isi artikel...</p>"></textarea>
+            
+            <div class="form-group md:col-span-2">
+                <label>Konten Artikel <span class="text-sm font-normal text-gray-400">(Gunakan toolbar untuk format teks)</span></label>
+                <div id="editor-container">
+                    <div id="editor"></div>
+                </div>
+                <p class="text-xs text-gray-400 mt-1">
+                    <i class="fas fa-info-circle"></i> 
+                    Gunakan toolbar di atas untuk: <strong>Bold</strong>, <em>Italic</em>, <u>Underline</u>, 
+                    <span class="text-center">Center</span>, List, Quote, Link, dan lainnya.
+                </p>
             </div>
         </div>
         
         <div class="flex gap-3 mt-6">
-            <button onclick="saveArticle()" class="btn-primary flex items-center gap-2">
+            <button onclick="saveArticle()" class="btn-primary">
                 <i class="fas fa-save"></i> Simpan Artikel
             </button>
-            <button onclick="hideForm()" class="btn-secondary flex items-center gap-2">
-                <i class="fas fa-times"></i> Batal
+            <button onclick="hideForm()" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors">
+                Batal
             </button>
         </div>
-        <div id="formMessage" class="mt-4 hidden"></div>
     </div>
 
-    <!-- Daftar Artikel -->
+    <!-- ========== DAFTAR ARTIKEL ========== -->
     <div class="card">
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-lg font-semibold text-gray-800">Daftar Artikel</h2>
-            <span id="articleCount" class="text-sm text-gray-500">0 artikel</span>
+            <span id="articleCount" class="text-sm text-gray-500">Memuat...</span>
         </div>
         
         <div id="articleList" class="space-y-3">
-            <!-- Akan diisi JavaScript -->
             <div class="text-center py-8 text-gray-400">
                 <i class="fas fa-spinner fa-spin text-2xl"></i>
                 <p class="mt-2">Memuat artikel...</p>
             </div>
         </div>
+    </div>
+
+    <!-- Tombol Buka Google Sheets -->
+    <div class="mt-6 text-center">
+        <a href="https://docs.google.com/spreadsheets/d/1QyV9VDWWNigTte8w37zhHOFX_t41jfISRiUeyrn1WTw/edit" target="_blank" class="text-sm text-gray-500 hover:text-green-600 transition-colors">
+            <i class="fas fa-edit mr-1"></i> Buka Google Sheets
+        </a>
+        <span class="text-gray-300 mx-3">|</span>
+        <span class="text-sm text-gray-400">⚠️ Setelah simpan, publish ulang Google Sheets agar muncul di website</span>
     </div>
 </div>
 
@@ -146,17 +233,65 @@
 // ============================================================
 // KONFIGURASI - GANTI DENGAN URL WEB APP ANDA
 // ============================================================
-const API_URL = 'https://script.google.com/macros/s/AKfycbzohWKoI1nl5mf2p8u83vvYrqxuxbck4QhlZ7toI3XKYYZfipJTDb41OHj4ES9k6wSq/exec';
-// Ganti YOUR_DEPLOYMENT_ID dengan ID dari hasil deploy
+const API_URL = 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec';
+// ⚠️ Ganti YOUR_DEPLOYMENT_ID dengan ID dari hasil deploy
 
+let quill = null;
 let editingId = null;
 let articles = [];
+
+// ============================================================
+// INIT QUILL EDITOR
+// ============================================================
+function initQuill() {
+    if (quill) return;
+    
+    quill = new Quill('#editor', {
+        theme: 'snow',
+        placeholder: 'Tulis konten artikel di sini... Gunakan toolbar untuk format teks (Bold, Italic, Center, dll)',
+        modules: {
+            toolbar: [
+                [{ 'header': [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                ['blockquote', 'code-block'],
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                [{ 'script': 'sub'}, { 'script': 'super' }],
+                [{ 'indent': '-1'}, { 'indent': '+1' }],
+                [{ 'align': [] }],
+                ['link', 'image', 'video'],
+                ['clean']
+            ]
+        }
+    });
+}
+
+// ============================================================
+// SET QUILL CONTENT
+// ============================================================
+function setQuillContent(html) {
+    if (!quill) initQuill();
+    if (html) {
+        quill.root.innerHTML = html;
+    } else {
+        quill.root.innerHTML = '';
+    }
+}
+
+// ============================================================
+// GET QUILL CONTENT (HTML)
+// ============================================================
+function getQuillContent() {
+    if (!quill) return '';
+    return quill.root.innerHTML;
+}
 
 // ============================================================
 // LOAD ARTICLES
 // ============================================================
 async function loadArticles() {
     const list = document.getElementById('articleList');
+    const count = document.getElementById('articleCount');
+    
     list.innerHTML = `
         <div class="text-center py-8 text-gray-400">
             <i class="fas fa-spinner fa-spin text-2xl"></i>
@@ -168,17 +303,20 @@ async function loadArticles() {
         const response = await fetch(API_URL);
         const data = await response.json();
         
-        if (data.error) throw new Error(data.error);
+        if (data.error) {
+            throw new Error(data.error);
+        }
         
         articles = data;
-        document.getElementById('articleCount').textContent = articles.length + ' artikel';
+        count.textContent = articles.length + ' artikel';
         renderArticles();
+        
     } catch (error) {
         list.innerHTML = `
             <div class="text-center py-8 text-red-500">
                 <i class="fas fa-exclamation-circle text-2xl"></i>
                 <p class="mt-2">Gagal memuat artikel: ${error.message}</p>
-                <button onclick="loadArticles()" class="mt-4 btn-primary">Coba Lagi</button>
+                <button onclick="loadArticles()" class="mt-4 btn-primary text-sm">Coba Lagi</button>
             </div>
         `;
     }
@@ -194,7 +332,7 @@ function renderArticles() {
         list.innerHTML = `
             <div class="text-center py-8 text-gray-400">
                 <i class="fas fa-inbox text-4xl"></i>
-                <p class="mt-2">Belum ada artikel. Klik "Artikel Baru" untuk menambahkan.</p>
+                <p class="mt-2">Belum ada artikel.</p>
             </div>
         `;
         return;
@@ -203,13 +341,13 @@ function renderArticles() {
     list.innerHTML = articles.map(article => `
         <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors border border-gray-100">
             <div class="flex-1 min-w-0">
-                <div class="flex items-center gap-3">
+                <div class="flex items-center gap-3 flex-wrap">
                     <span class="text-sm font-medium text-gray-400">#${article.id || '?'}</span>
                     <h3 class="font-semibold text-gray-800 truncate">${article.title || 'Tanpa Judul'}</h3>
                     <span class="${article.status === 'published' ? 'status-published' : 'status-draft'}">${article.status || 'draft'}</span>
                     ${article.is_featured === true || article.is_featured === 'TRUE' ? '<span class="text-yellow-500 text-sm"><i class="fas fa-star"></i></span>' : ''}
                 </div>
-                <div class="flex items-center gap-4 text-xs text-gray-400 mt-1">
+                <div class="flex items-center gap-4 text-xs text-gray-400 mt-1 flex-wrap">
                     <span><i class="fas fa-folder mr-1"></i>${article.category || 'umum'}</span>
                     ${article.author ? `<span><i class="fas fa-user mr-1"></i>${article.author}</span>` : ''}
                     ${article.created_at ? `<span><i class="far fa-calendar mr-1"></i>${formatDate(article.created_at)}</span>` : ''}
@@ -217,13 +355,13 @@ function renderArticles() {
                 <div class="text-sm text-gray-500 truncate mt-1">${article.excerpt || 'Tidak ada ringkasan'}</div>
             </div>
             <div class="flex gap-2 ml-4 flex-shrink-0">
-                <button onclick="editArticle(${article.id})" class="px-3 py-1.5 bg-blue-100 text-blue-700 rounded-lg text-sm hover:bg-blue-200 transition-colors">
+                <button onclick="editArticle(${article.id})" class="btn-edit" title="Edit">
                     <i class="fas fa-edit"></i>
                 </button>
-                <button onclick="deleteArticle(${article.id})" class="px-3 py-1.5 bg-red-100 text-red-700 rounded-lg text-sm hover:bg-red-200 transition-colors">
+                <button onclick="deleteArticle(${article.id})" class="btn-danger" title="Hapus">
                     <i class="fas fa-trash"></i>
                 </button>
-                <a href="article-detail.html?id=${article.id}" target="_blank" class="px-3 py-1.5 bg-green-100 text-green-700 rounded-lg text-sm hover:bg-green-200 transition-colors">
+                <a href="article-detail.html?id=${article.id}" target="_blank" class="btn-view" title="Lihat">
                     <i class="fas fa-eye"></i>
                 </a>
             </div>
@@ -253,8 +391,12 @@ function formatDate(dateString) {
 // SHOW FORM
 // ============================================================
 function showForm(data) {
-    document.getElementById('articleForm').classList.remove('hidden');
-    document.getElementById('articleForm').scrollIntoView({ behavior: 'smooth' });
+    const form = document.getElementById('articleForm');
+    form.classList.remove('hidden');
+    form.scrollIntoView({ behavior: 'smooth' });
+    
+    // Inisialisasi Quill jika belum
+    if (!quill) initQuill();
     
     if (data) {
         editingId = data.id;
@@ -267,7 +409,7 @@ function showForm(data) {
         document.getElementById('inputFeatured').value = data.is_featured === true || data.is_featured === 'TRUE' ? 'TRUE' : 'FALSE';
         document.getElementById('inputExcerpt').value = data.excerpt || '';
         document.getElementById('inputImage').value = data.featured_image || '';
-        document.getElementById('inputContent').value = data.content || '';
+        setQuillContent(data.content || '');
     } else {
         editingId = null;
         document.getElementById('formTitle').textContent = '📝 Tambah Artikel Baru';
@@ -279,8 +421,9 @@ function showForm(data) {
         document.getElementById('inputFeatured').value = 'FALSE';
         document.getElementById('inputExcerpt').value = '';
         document.getElementById('inputImage').value = '';
-        document.getElementById('inputContent').value = '';
+        setQuillContent('');
     }
+    
     document.getElementById('formMessage').classList.add('hidden');
 }
 
@@ -293,29 +436,52 @@ function hideForm() {
 }
 
 // ============================================================
+// SHOW MESSAGE
+// ============================================================
+function showMessage(text, type) {
+    const msg = document.getElementById('formMessage');
+    msg.textContent = text;
+    msg.className = 'message ' + (type === 'error' ? 'message-error' : 'message-success');
+    msg.classList.remove('hidden');
+}
+
+// ============================================================
 // SAVE ARTICLE
 // ============================================================
 async function saveArticle() {
     const title = document.getElementById('inputTitle').value.trim();
-    const content = document.getElementById('inputContent').value.trim();
+    const content = getQuillContent();
+    const excerpt = document.getElementById('inputExcerpt').value.trim();
     
     if (!title) {
-        showMessage('Judul wajib diisi!', 'error');
+        showMessage('❌ Judul wajib diisi!', 'error');
+        document.getElementById('inputTitle').focus();
         return;
     }
-    if (!content) {
-        showMessage('Konten wajib diisi!', 'error');
+    
+    if (!content || content === '<p><br></p>' || content === '<p><br></p>') {
+        showMessage('❌ Konten wajib diisi!', 'error');
         return;
+    }
+
+    // Auto-generate excerpt jika kosong
+    let finalExcerpt = excerpt;
+    if (!finalExcerpt) {
+        // Ambil teks dari konten (hilangkan HTML)
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = content;
+        const text = tempDiv.textContent || '';
+        finalExcerpt = text.substring(0, 150) + (text.length > 150 ? '...' : '');
     }
 
     const data = {
         title: title,
         category: document.getElementById('inputCategory').value,
-        author: document.getElementById('inputAuthor').value.trim(),
+        author: document.getElementById('inputAuthor').value.trim() || 'Tim Jalupang Teknik',
         read_time: parseInt(document.getElementById('inputReadTime').value) || 5,
         status: document.getElementById('inputStatus').value,
         is_featured: document.getElementById('inputFeatured').value === 'TRUE' ? true : false,
-        excerpt: document.getElementById('inputExcerpt').value.trim(),
+        excerpt: finalExcerpt,
         featured_image: document.getElementById('inputImage').value.trim(),
         content: content
     };
@@ -349,7 +515,7 @@ async function saveArticle() {
 // EDIT ARTICLE
 // ============================================================
 function editArticle(id) {
-    const article = articles.find(a => a.id === id);
+    const article = articles.find(a => Number(a.id) === id);
     if (article) {
         showForm(article);
     }
@@ -362,7 +528,7 @@ async function deleteArticle(id) {
     if (!confirm('Apakah Anda yakin ingin menghapus artikel ini?')) return;
     
     try {
-        const response = await fetch(`${API_URL}?id=${id}`, {
+        await fetch(`${API_URL}?id=${id}`, {
             method: 'DELETE',
             mode: 'no-cors'
         });
@@ -376,19 +542,12 @@ async function deleteArticle(id) {
 }
 
 // ============================================================
-// SHOW MESSAGE
-// ============================================================
-function showMessage(text, type) {
-    const msg = document.getElementById('formMessage');
-    msg.textContent = text;
-    msg.className = 'mt-4 p-3 rounded-lg ' + (type === 'error' ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700');
-    msg.classList.remove('hidden');
-}
-
-// ============================================================
 // INIT
 // ============================================================
-document.addEventListener('DOMContentLoaded', loadArticles);
+document.addEventListener('DOMContentLoaded', function() {
+    initQuill();
+    loadArticles();
+});
 </script>
 </body>
 </html>
